@@ -1,3 +1,5 @@
+package chapterTwoString;
+
 import java.util.Arrays;
 
 public class PalindromeGetStream {

@@ -1,3 +1,5 @@
+package chapterTwoString;
+
 public class NumberOfOperations {
     public int numberOfOperations(String s) {
         //abcde, how many operation to palindrome abcba
