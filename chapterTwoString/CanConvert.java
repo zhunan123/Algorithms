@@ -3,7 +3,7 @@ package chapterTwoString;
 public class CanConvert {
     public static void main(String[] args){
         test("lintcode", "ide");
-        test("adda", "aad");
+//        test("adda", "aad");
     }
     public static boolean test(String s, String t){
         if (s == "" && t == ""){
