@@ -3,6 +3,9 @@ package chapterTwoString;
 import java.util.ArrayList;
 
 public class ReverseWords {
+
+    //解题思路 搞两个指针ij，i在是“ ”才会往前走，j是有数支才往前走，然后加入arraylist，基本就是实现一个split功能，吧string切割成每个单词放进array
+    //然后再逆着加入string builder里面就行
     public static void main(String[] args){
         test("the sky is blue");
     }
