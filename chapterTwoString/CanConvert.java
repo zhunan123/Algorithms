@@ -21,6 +21,5 @@ public class CanConvert {
             i++;
         }
         return j == m;
-
     }
 }

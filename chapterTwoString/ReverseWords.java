@@ -23,6 +23,7 @@ public class ReverseWords {
                 String temp = s.substring(i,j);
                 alist.add(temp);
             }
+//            i = j + 1;
             i = j;
             j ++;
 
@@ -35,6 +36,7 @@ public class ReverseWords {
             }
 
         }
+        System.out.println(sb.toString());
         return sb.toString();
     }
 }
