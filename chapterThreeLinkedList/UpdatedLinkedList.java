@@ -1,15 +1,6 @@
 package chapterThreeLinkedList;
 
 public class UpdatedLinkedList {
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        public ListNode(int val){
-            this.val = val;
-            next = null;
-        }
-    }
     //only use one dummy/prevhead
     public ListNode updatedInsertedNode(ListNode head, int val){
         ListNode newNode = new ListNode(val);
