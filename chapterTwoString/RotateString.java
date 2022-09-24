@@ -8,25 +8,25 @@ public class RotateString {
     }
 
 
-    public static void test(String chars, int offset) {
-        char[] s = chars.toCharArray();
-        if(s.length == 0 || s == null){
+    public static void test(String s, int offset) {
+        char[] chars = s.toCharArray();
+        if (chars.length == 0 || s == null) {
             return;
         }
+        offset = offset % chars.length;
 
-        //开始旋转
-        char prev = ' ';
-        char cur = ' ';
-        int cnt = offset % s.length;
-        for(int i =0;i<cnt; i++){
-
-            prev = s[0];
-            for(int j=1;j<s.length;j++){
-                cur = s[j];
-                s[j] = prev;
-                prev = cur;
+        char temp = ' ';
+        char next = ' ';
+        //相当于不断将数组往后移动一位;
+        for (int j = 0; j < offset; j++) {
+            temp = chars[0];
+            for (int i = 1; i < chars.length; i++) {
+                next = chars[i];
+                chars[i] = temp;
+                temp = next;
             }
-            s[0] = prev;
+            chars[0] = temp;
+
         }
     }
 }
