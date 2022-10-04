@@ -1,49 +1,52 @@
 package QueueStack;
 
-public class ImplementStack {
+public class ImplementQueue {
 
+    //THIS IS FOR QUEUE METHOD, pop, push, top is for all override method in queue
+    //not in stack
+
+    /**
+     * this is all implement push pop top with queue.
+     * push(1) //push 1 into tail in queue
+     * pop(2) //return first in queue
+     * push(2)
+     * push(3)
+     * top()
+     * pop()
+     * result-------> 1 2 2
+     * */
 
     interface InterfaceQueue {
         void push(int element);
-
-        // define an interface for pop method
-        /* write your code here */
         int pop();
-
-        // define an interface for top method
-        /* write your code here */
         int top();
     }
 
 
     public class MyQueue implements InterfaceQueue {
-        /* you can declare your private attributes here */
         public MyQueue() {
             // do initialization if necessary
         }
 
-        class LinkedNode {
+        public class ListNode {
             int val;
-            LinkedNode next;
-            public LinkedNode(int val) {
+            ListNode next;
+            public ListNode(int val) {
                 this.val = val;
+                next = null;
             }
         }
 
-        public LinkedNode dummyNode = new LinkedNode(-1);
-        public LinkedNode tail = dummyNode;
+        public ListNode dummyNode = new LinkedNode(-1);
+        public ListNode tail = dummyNode;
 
-        // implement the push method
-        /* write your code here */
         @Override
         public void push(int val) {
-            LinkedNode newNode = new LinkedNode(val);
+            ListNode newNode = new ListNode(val);
             tail.next = newNode;
             tail = tail.next;
         }
 
-        // implement the pop method
-        /* write your code here */
         @Override
         public int pop() {
             if (dummyNode.next == null) {
@@ -54,8 +57,6 @@ public class ImplementStack {
             return val;
         }
 
-        // implement the top method
-        /* write your code here */
         @Override
         public int top() {
             if (dummyNode.next == null) {
