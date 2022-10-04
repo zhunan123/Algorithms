@@ -6,6 +6,7 @@ public class ImplementQueue {
     //not in stack
 
     /**
+     * implement queue with linkedList listNode
      * this is all implement push pop top with queue.
      * push(1) //push 1 into tail in queue
      * pop(2) //return first in queue
