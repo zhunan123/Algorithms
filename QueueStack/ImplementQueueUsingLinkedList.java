@@ -1,6 +1,6 @@
 package QueueStack;
 
-public class ImplementQueue {
+public class ImplementQueueUsingLinkedList {
 
     //THIS IS FOR QUEUE METHOD, pop, push, top is for all override method in queue
     //not in stack
@@ -38,7 +38,7 @@ public class ImplementQueue {
             }
         }
 
-        public ListNode dummyNode = new LinkedNode(-1);
+        public ListNode dummyNode = new ListNode(-1);
         public ListNode tail = dummyNode;
 
         @Override
