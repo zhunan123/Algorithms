@@ -1,6 +1,6 @@
 package QueueStack;
 
-public class ImplementQueueUsingLinkedList {
+public class ImplementQueueUsingCustomizedListNode {
 
     //THIS IS FOR QUEUE METHOD, pop, push, top is for all override method in queue
     //not in stack
