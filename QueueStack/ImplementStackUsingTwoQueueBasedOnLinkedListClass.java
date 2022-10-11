@@ -3,7 +3,7 @@ package QueueStack;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class ImplementStackUsingTwoQueue {
+public class ImplementStackUsingTwoQueueBasedOnLinkedListClass {
 
     class ListNode {
         int val;
