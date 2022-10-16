@@ -1,5 +1,8 @@
 package BFSDFSTree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PreOrderTraversal {
     /**
      * 输入：
