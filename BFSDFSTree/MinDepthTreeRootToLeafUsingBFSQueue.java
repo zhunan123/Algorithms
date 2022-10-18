@@ -3,7 +3,7 @@ package BFSDFSTree;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class MinDepthTreeRootToLeaf {
+public class MinDepthTreeRootToLeafUsingBFSQueue {
 
     /**
      * 输入:  {1,2,3,#,#,4,5}

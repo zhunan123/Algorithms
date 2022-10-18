@@ -1,6 +1,6 @@
 package BFSDFSTree;
 
-public class tree2str {
+public class tree2strUsingRecursion {
 
     /**
      * 输入: Binary tree: [1,2,3,#,4]
