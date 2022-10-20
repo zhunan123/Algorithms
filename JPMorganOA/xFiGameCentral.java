@@ -7,7 +7,7 @@ package JPMorganOA;
  * 消w，bob后动，消b，谁先无法操作谁输。问最后谁胜。
  * 例如wwwwbbb消去w变成wwwbbb，消去b变成wwwbb，消去w变成wwbb，无法再消，所以wendy胜
  */
-
+ 
 class xFiGameCentral {
     public String gameWinner(String colors) {
         int wendy = 0;
