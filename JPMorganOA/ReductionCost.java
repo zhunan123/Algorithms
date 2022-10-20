@@ -1,5 +1,8 @@
 package JPMorganOA;
 
+import java.util.List;
+import java.util.PriorityQueue;
+
 /**
  * 第二题：给一个数组list，每次抽出两个记录他们的和作为cost，然后把cost加回到list里面，直达list里面只剩下一个number，问所有的cost总和最小为多少
  * Given an array, reduce the array to a single element with minimum cost. For reducing, remove two elements from the array,
