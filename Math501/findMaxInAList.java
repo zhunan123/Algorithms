@@ -10,6 +10,6 @@ public class findMaxInAList {
 
     public static void main(String[] args) {
         int[] list = new int[]{4,5,1,4,77,6};
-        findMax(list, list.length);
+        System.out.println(findMax(list, list.length));
     }
 }
