@@ -1,0 +1,8 @@
+1.for (i = 1; i < n; i++) {
+    for (j = 1; j <= i; j *= 2){
+        sum++;
+    }
+}
+to compute theta, why log(1) + log(2) + log(3) + ...... + log(n);
+
+2.why insertion sort has worst case theta(n ^2), and best case theta(n)

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class InsertionSort {
   /**
-   * Worst case inverse sorted list θ(n^2),
+   * Worst case reverse sorted list θ(n^2),(n - 1) + (n - 2) + ....... + 2 + 1 = θ(n^2)
    * Best case  sorted list θ(n)
    * Average θ(n^2)
    * */
