@@ -6,6 +6,21 @@ public class MergeSort {
   //recursive
   //merge function is not recursive， will take 2 subarray and combine into 1 sorted array
   //θ(n*logn)
+  /**
+   * time complexity:
+   * T(1) = time to solve problem of size 1--->base case
+   * T(n) = time required to solve a problem of size n
+   * T(1) = c1
+   * T(n) = 2T(n/2) +c2*n plug n/2 into T(n)
+   * T(n) = 2T(n/2) +c2*n = 2(2T(n/4) +c2*(n/2) + c2*n = 4T(n/4) +2*c2*n = 2^k*T(n/(2^k)) +k*n*c2
+   * because T(1) = c1 ----->n/(2^k) = 1, n = 2^k, k= log(n)
+   * T(n) = 2^log(n)*T(n/2^log(n)) + log(n)*n*c2 = n*T(1) +n*log(n)*c2
+   * θ(n*log(n))
+   * */
+
+
+
+
 
   /**STEP 1
    * Merge two sorted arrays into one sorted array
