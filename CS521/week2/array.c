@@ -2,7 +2,7 @@
 
 //the function decays into pointer, so it doesn't know about the size of array.
 void good_function(int x[]) {
-    printf("Memory address of x is: %p\n", &x);//address of the copy of the memory addressthat was made
+    printf("Memory address of x is: %p\n", &x);//address of the copy of the memory addressthat was made,  --->a copy of memory address of a memory address
     printf("Memory address of x (again) is: %p\n", x); //actual address/pointer
     printf("Size of an int is: %zu\n", sizeof(x) / sizeof(int)); //2
 }
