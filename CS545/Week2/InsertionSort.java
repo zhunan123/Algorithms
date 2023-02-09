@@ -24,10 +24,36 @@ public class InsertionSort {
 
   }
 
+  public static void insertionSort2(int[] arr, int lowindex, int highindex, boolean reversed) {
+    int j;
+    int cur;
+    for (int i = 0; i < arr.length; i++) {
+      if (i >= lowindex && i < highindex) {
+        cur = arr[i + 1];
+        j = i;
+        if (!reversed) {
+          while (j >= lowindex && cur < arr[j]) {
+            arr[j + 1] = arr[j];
+            j--;
+          }
+        } else {
+          while (j >= lowindex && cur > arr[j]) {
+            arr[j + 1] = arr[j];
+            j--;
+          }
+        }
+        arr[j + 1] = cur;
+      }
+    }
+  }
+
   public static void main(String[] args) {
-    int[] arr = {7, 3, 6, 4, 1};
-    System.out.println(Arrays.toString(arr));
-    insertionSort(arr);
+    int[] arr = {8, 7, 2, 7, 15, 4, 6, 9, 5};
+//    System.out.println(Arrays.toString(arr));
+//    insertionSort(arr);
+//    System.out.println(Arrays.toString(arr));
+
+    insertionSort2(arr,2,6, true);
     System.out.println(Arrays.toString(arr));
   }
 }
