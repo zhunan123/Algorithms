@@ -4,27 +4,48 @@ import java.util.Arrays;
 
 public class ShakeSort {
 
-  public static void shakesort(int[] arr) {
+  public static void shakesort(int[] arr, int lowindex, int highindex, boolean reversed) {
     for (int i = 0; i < arr.length - 1; i++) {
-      boolean needSwap = false;
-      for (int j = i + 1; j < arr.length; j++) {
-        if (arr[j] <= arr[j - 1]) {
-          int temp = arr[j];
-          arr[j] = arr[j - 1];
-          arr[j - 1] = temp;
-          needSwap = true;
+      if (i >= lowindex && i < highindex) { //goes inverse order ---->
+        boolean needSwap = false;
+        if (!reversed) {
+          for (int j = i + 1; j < highindex; j++) {
+            if (arr[j] <= arr[j - 1]) {
+              int temp = arr[j];
+              arr[j] = arr[j - 1];
+              arr[j - 1] = temp;
+              needSwap = true;
+            }
+          }
+          for (int j = highindex; j > i; j--) { //goes reverse order <-------
+            if (arr[j] <= arr[j - 1]) {
+              int temp = arr[j];
+              arr[j] = arr[j - 1];
+              arr[j - 1] = temp;
+              needSwap = true;
+            }
+          }
+        } else {
+          for (int j = i + 1; j < highindex; j++) {
+            if (arr[j] >= arr[j - 1]) {
+              int temp = arr[j];
+              arr[j] = arr[j - 1];
+              arr[j - 1] = temp;
+              needSwap = true;
+            }
+          }
+          for (int j = highindex; j > i; j--) { //goes reverse order <-------
+            if (arr[j] >= arr[j - 1]) {
+              int temp = arr[j];
+              arr[j] = arr[j - 1];
+              arr[j - 1] = temp;
+              needSwap = true;
+            }
+          }
         }
-      }
-      for (int j = arr.length - 1; j > i; j--) {
-        if (arr[j] <= arr[j - 1]) {
-          int temp = arr[j];
-          arr[j] = arr[j - 1];
-          arr[j - 1] = temp;
-          needSwap = true;
+        if (!needSwap) { //the list is already sorted, so break the loop.
+          break;
         }
-      }
-      if (!needSwap) {
-        break;
       }
     }
   }
@@ -34,7 +55,7 @@ public class ShakeSort {
   public static void main(String[] args) {
     int[] arr = {4, 10, 6, 9, 2, 3, 8, 4};
 
-    shakesort(arr);
+    shakesort(arr, 1, 3, true);
     System.out.println(Arrays.toString(arr));
   }
 }
