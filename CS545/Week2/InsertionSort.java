@@ -21,7 +21,6 @@ public class InsertionSort {
       }
       arr[j + 1] = curr;
     }
-
   }
 
   public static void insertionSort2(int[] arr, int lowindex, int highindex, boolean reversed) {

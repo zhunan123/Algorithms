@@ -85,7 +85,7 @@ int rotate(int *ch, int start, int end) {
         }
 
         if (new_pos <= end) { // if won't go back after rotate
-            *ch = *ch + half_range;
+            *ch = *ch + half_range; //first * is pointer points to ch's memory address, second * is dereference ch so we can change ch's value;
         } else { //if need to go to start of list after rotate
             *ch = *ch + half_range - (end - start + 1);
         }
