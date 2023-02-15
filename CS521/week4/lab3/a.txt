@@ -1,0 +1,2 @@
+This is what's inside file.txt!
+Incredible, right?
