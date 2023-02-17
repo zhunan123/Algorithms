@@ -52,6 +52,59 @@ public class QuickSortExercies {
     }
   }
 
+  public static String sortABC(String[] votes) {
+    // FILL IN CODE (use the same algorithm as in sort01).
+    int i = 0;
+    int j = votes.length - 1;
+    int countA;
+    int countB;
+    int countC;
+
+    while (i < j) {
+      while (i < j && votes[i].compareTo("A") == 0) {
+        i++;
+      }
+      while (i < j && votes[j].compareTo("A") != 0) {
+        j--;
+      }
+      if (i < j) {
+        String temp = votes[i];
+        votes[i] = "A";
+        votes[j] = temp;
+      }
+    }
+    countA = i;
+
+    int m = i;
+    int n = votes.length - 1;
+
+    while (m < n) {
+      while (m < n && votes[m].compareTo("B") == 0) {
+        m++;
+      }
+      while (m < n && votes[n].compareTo("C") == 0) {
+        n--;
+      }
+      if (m < n) {
+        votes[m] = "B";
+        votes[n] = "C";
+      }
+    }
+    countB = m - countA;
+    countC = votes.length - n;
+
+    if (countA > countB && countA > countC) {
+      System.out.println("A");
+      return "A";
+    } else if (countB > countA && countB > countC) {
+      System.out.println("B");
+      return "B";
+    } else {
+      System.out.println("C");
+      return "C";
+    }
+  }
+
   public static void swap(int i, int j, int[] arr) {
     int temp = arr[i];
     arr[i] = arr[j];
@@ -91,12 +144,18 @@ public class QuickSortExercies {
 //    System.out.println(Arrays.toString(arr));
 
 //      String[] votes = {"A", "B", "A", "A", "B", "A", "B", "B", "A"};
-//      sortAB(votes);
+//      sortABC(votes);
 //      System.out.println(Arrays.toString(votes));
+
+//    String[] votes = {"A", "B", "A", "C", "A", "A", "A", "B", "C", "A", "B"};
+//    String[] votes = {"A", "B", "A", "C", "A", "C", "B", "A", "B", "B", "C", "A"};
+    String[] votes = {"C", "B", "A", "C", "C", "C", "B", "A", "C", "B", "C", "A"};
+    sortABC(votes);
+    System.out.println(Arrays.toString(votes));
 //
-    int[] arr = {8, 5, 9, 1, 6, 0, 9, 13, 4, 10};
-    int i = partition(0, arr.length - 1, arr);
-    System.out.println(i);
-    System.out.println(Arrays.toString(arr));
+//    int[] arr = {10,14,13,15,12};
+//    int i = partition(0, arr.length - 1, arr);
+//    System.out.println(i);
+//    System.out.println(Arrays.toString(arr));
   }
 }
