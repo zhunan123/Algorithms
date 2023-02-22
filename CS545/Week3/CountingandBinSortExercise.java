@@ -49,6 +49,7 @@ public class CountingandBinSortExercise {
      * @param arr array of elements, where each element has an integer key >= 0
      * @param maxValue largest value of any key in the array
      */
+    //similiar to counting sort, have advantage when have very small integer range
     public static void binSort(Elem[] arr, int maxValue) {
       int i = 0;
       LinkedList<Elem>[] bins = new LinkedList[maxValue+1];
