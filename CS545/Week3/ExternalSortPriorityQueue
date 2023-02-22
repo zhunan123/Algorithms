@@ -1,0 +1,151 @@
+package CS545.Week3;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
+
+class Node implements Comparable<Node> {
+  public Node(String fileName) throws IOException {
+    this.fileName = fileName;
+    File file = new File(fileName);
+    br = new BufferedReader(new FileReader(file));
+    readNewValue();
+  }
+
+  BufferedReader br;
+  String fileName;
+  int value;
+
+  public void closeBufferedReader() throws IOException {
+    br.close();
+  }
+
+  public boolean readNewValue() throws IOException {
+    String tmp=br.readLine();
+    if(tmp!=null){
+      value = Integer.parseInt(tmp);
+    }
+    return tmp!=null;
+  }
+
+  public int getValue() {
+    return value;
+  }
+
+  @Override
+  public int compareTo(Node o) {
+    return Integer.compare(this.value, o.value);
+  }
+}
+
+public class ExternalSortPriorityQueue {
+
+  public void ExternalSort(String inputFile, String outputFile, int k, int m) {
+    // FILL IN CODE
+    try {
+      //read file, add k elements to temp array then sort it.
+      FileReader fr = new FileReader(inputFile);
+      BufferedReader br = new BufferedReader(fr);
+      int[] temp = new int[k];
+      String filePrefix = "temp";
+      List<String> list = new ArrayList<>();
+
+      int i;
+      int j;
+      for (i = 0; i < m; i++) {  //iterate m chunk
+        for (j = 0; j < k; j++) {  //iterate k elements in each chunk
+          String strNum = br.readLine();
+          if (strNum != null) {
+            temp[j] = Integer.parseInt(strNum);
+          } else {
+            break;
+          }
+        }
+        quickSort(temp, 0, temp.length - 1);
+//                for (int q = 0; q < temp.length; q++)
+//                    System.out.println(temp[q]);
+        // created temp file, Write the sorted array to temp file
+        list.add(filePrefix + i + ".txt");
+        FileWriter fw = new FileWriter(filePrefix + i + ".txt");
+        PrintWriter pw = new PrintWriter(fw);
+        for (int c = 0; c < j; c++) {
+          pw.println(temp[c]);
+        }
+        pw.close();
+        fw.close();
+      }
+      br.close();
+      fr.close();
+
+      //open every file together and merge files with sorted array
+
+      kMerge(list, outputFile);
+
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+
+  private void quickSort(int[] arr, int left, int right) {
+    if (left < right) {
+      int p = partition(arr, left, right);
+      quickSort(arr, left, p - 1);
+      quickSort(arr, p + 1, right);
+    }
+  }
+
+  private int partition(int[] arr, int left, int right) {
+    int pivot = arr[left];
+
+    while (left < right) {
+      while (left < right && arr[right] > pivot) {
+        right--;
+      }
+      if (left < right) {
+        arr[left++] = arr[right];
+      }
+      while (left < right && arr[left] <= pivot) {
+        left++;
+      }
+      if (left < right) {
+        arr[right--] = arr[left];
+      }
+
+    }
+    arr[left] = pivot;
+    return left;
+  }
+
+
+  public static void kMerge(List<String> fileList, String outputFile) throws IOException {
+
+    PriorityQueue<Node> priorityQueue = new PriorityQueue<>();
+    File destFile = new File(outputFile);
+    for(String str: fileList) {
+      Node node = new Node(str);
+      priorityQueue.add(node);
+    }
+    BufferedWriter bWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(destFile)));
+
+    while(!priorityQueue.isEmpty()) {
+      Node node = priorityQueue.poll();
+      bWriter.write(node.getValue() + "\n");
+      bWriter.flush();
+      if(node.readNewValue()) {
+        priorityQueue.add(node);
+      } else {
+        node.closeBufferedReader();
+      }
+    }
+    bWriter.close();
+  }
+
+
+
+  public static void main(String[] args) {
+    ExternalSortPriorityQueue externalSort = new ExternalSortPriorityQueue();
+    externalSort.ExternalSort("src\\inputFile.txt", "src\\outputFile.txt", 2, 8);
+  }
+}
