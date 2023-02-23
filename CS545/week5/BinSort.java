@@ -1,4 +1,4 @@
-package CS545.Week3;
+package CS545.week5;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -12,14 +12,15 @@ public class BinSort {
    */
   public static void binSort(Elem[] arr, int maxValue) {
     int i = 0;
-    LinkedList<Elem>[] bins = new LinkedList[maxValue+1];
+    LinkedList<Elem>[] bins = new LinkedList[maxValue+1]; // array of linked list, since we start key is from 0 to maxValue. so create maxValue + 1 linked list array
     // Initialize all the linked lists
-    for (i = 0; i <= maxValue; i++)
+    for (i = 0; i <= maxValue; i++) // create maxVal + 1 of linked list
       bins[i] = new LinkedList<>();
 
     // Iterate over arr; get the key of each element
     // and place the element in the corresponding bin:
     // the index of the bin is equal to the key
+    //where to put element into correct linked list
     for (i = 0; i < arr.length; i++) {
       Elem current  = arr[i];
       int key = current.getKey();
@@ -28,6 +29,7 @@ public class BinSort {
     }
 
     // Iterate over the bins and place elements back into arr
+    //when you have the linked list all filled , put the linked list back to input array
     int count  = 0;
     for (int k = 0; k <= maxValue; k++) {
       LinkedList<Elem> list  = bins[k];

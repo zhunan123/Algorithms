@@ -1,13 +1,15 @@
-package CS545.Week3;
+package CS545.week5;
 
 public class Elem {
 
     private int key;
     private Object data;
+    Elem next;
 
     public Elem(int key, Object data) {
       this.key = key;
       this.data = data;
+      next = null;
     }
 
     public int getKey() {
