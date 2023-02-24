@@ -79,7 +79,7 @@ public class BucketSort {
             new Elem(376, "K"), new Elem(358, "M"),
             new Elem(84, "L")
     };
-    bucketSort(elements, 0, elements.length - 1);
+    bucketSort(elements, 1, 6);
     System.out.println(Arrays.toString(elements));
   }
 }
