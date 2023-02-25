@@ -55,7 +55,7 @@ public class ShakeSort {
   public static void main(String[] args) {
     int[] arr = {4, 10, 6, 9, 2, 3, 8, 4};
 
-    shakesort(arr, 1, 3, true);
+    shakesort(arr, 0, 7, true);
     System.out.println(Arrays.toString(arr));
   }
 }

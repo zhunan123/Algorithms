@@ -30,7 +30,7 @@ public class QuickSortAdvanced {
       arr[0] = temp;
     }
     if (arr[1] > arr[2]) {
-      int temp = arr[1];
+      int temp = arr[2];
       arr[2] = arr[1];
       arr[1] = temp;
     }
@@ -61,6 +61,15 @@ public class QuickSortAdvanced {
     int ramNum2 = findRandomNumber(low, high);
     int ramNum3 = findRandomNumber(low, high);
 
+    while (ramNum1 == ramNum2) {
+      ramNum2 = findRandomNumber(low, high);
+    }
+    if (high - low > 1) {
+      while (ramNum3 == ramNum1 || ramNum3 == ramNum2) {
+        ramNum3 = findRandomNumber(low, high);
+      }
+    }
+
     int pivotIndex = findMedian(ramNum1, ramNum2, ramNum3);
     int pivotElement = arr[pivotIndex];
 
@@ -86,7 +95,7 @@ public class QuickSortAdvanced {
   public static void main(String[] args) {
     int[] arr = {5, 2, 9, 12, 6, 8, 3, 7};
 
-    quicksort(arr, 1,6);
+    quicksort(arr, 0,7);
     System.out.println(Arrays.toString(arr));
   }
 }

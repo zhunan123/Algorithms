@@ -52,7 +52,7 @@ public class InsertionSort {
 //    insertionSort(arr);
 //    System.out.println(Arrays.toString(arr));
 
-    insertionSort2(arr,2,6, true);
+    insertionSort2(arr,0,8, false);
     System.out.println(Arrays.toString(arr));
   }
 }

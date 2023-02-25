@@ -34,12 +34,14 @@ public class BucketSort {
     }
   }
 
-  public static void bucketSort(Elem[] arr, int lowindex, int highindex) {
+  public static void bucketSort(Elem[] arr, int lowindex, int highindex, boolean reverse) {
     int numberOfBuckets = (highindex - lowindex + 1) / 2;
     int maxValue = 0;
     for (int i = 0; i < arr.length; i++) { //find maxVal
-      if (arr[i].getKey() > maxValue) {
-        maxValue = arr[i].getKey();
+      if (i >= lowindex && i <= highindex) {
+        if (arr[i].getKey() > maxValue) {
+          maxValue = arr[i].getKey();
+        }
       }
     }
     int bucketSize = maxValue / numberOfBuckets + 1;
@@ -50,23 +52,38 @@ public class BucketSort {
     }
 
     for (int i = 0; i < arr.length; i++) { //put elem into correct bucket place
-      Elem current = arr[i];
-      int index = computeBucketIndex(current, bucketSize);
-      if (buckets[index].size() == 0) {
-        buckets[index].add(current);
-      } else {
-        insertIntoBuckets(current, buckets[index], buckets, index);
+      if (i >= lowindex && i <= highindex) {
+        Elem current = arr[i];
+        int index = computeBucketIndex(current, bucketSize);
+        if (buckets[index].size() == 0) {
+          buckets[index].add(current);
+        } else {
+          insertIntoBuckets(current, buckets[index], buckets, index);
+        }
       }
     }
 
-    int count = 0;
-    for (int i = 0; i < numberOfBuckets; i++) {
-      LinkedList<Elem> list = buckets[i];
-      Iterator<Elem> it = list.iterator();
-      while (it.hasNext()) {
-        Elem curr = it.next();
-        arr[count] = curr;
-        count++;
+    if (!reverse) {
+      int count = lowindex;
+      for (int i = 0; i < numberOfBuckets; i++) {
+        LinkedList<Elem> list = buckets[i];
+        Iterator<Elem> it = list.iterator();
+        while (it.hasNext()) {
+          Elem curr = it.next();
+          arr[count] = curr;
+          count++;
+        }
+      }
+    } else {
+      int count = highindex;
+      for (int i = 0; i < numberOfBuckets; i++) {
+        LinkedList<Elem> list = buckets[i];
+        Iterator<Elem> it = list.iterator();
+        while (it.hasNext()) {
+          Elem curr = it.next();
+          arr[count] = curr;
+          count--;
+        }
       }
     }
   }
@@ -79,7 +96,7 @@ public class BucketSort {
             new Elem(376, "K"), new Elem(358, "M"),
             new Elem(84, "L")
     };
-    bucketSort(elements, 1, 6);
+    bucketSort(elements, 4, 6, true);
     System.out.println(Arrays.toString(elements));
   }
 }
