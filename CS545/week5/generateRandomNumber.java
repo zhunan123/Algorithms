@@ -46,6 +46,6 @@ public class generateRandomNumber {
 
   public static void main(String[] args) {
 //    findDifferentNumber(0, 9);
-    findMedian(3,3,3);
+    findMedian(13,2,28);
   }
 }

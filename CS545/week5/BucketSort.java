@@ -96,7 +96,7 @@ public class BucketSort {
             new Elem(376, "K"), new Elem(358, "M"),
             new Elem(84, "L")
     };
-    bucketSort(elements, 4, 6, true);
+    bucketSort(elements, 0, 6, true);
     System.out.println(Arrays.toString(elements));
   }
 }
