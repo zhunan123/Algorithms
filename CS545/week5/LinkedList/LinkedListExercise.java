@@ -74,17 +74,15 @@ public class LinkedListExercise {
    * @param index index where to insert
    * @param elem element to insert
    */
-  public void insert(int index, int elem) {
+  public void insert(int index, int elem) { //insert at particular index
     Node newNode = new Node(elem);
     if (head == null) { // the linked list was previously empty, the new node becomes the head and the tail
       head = newNode;
       tail = newNode;
-    }
-    else if (index == 0) { // inserting in front
+    } else if (index == 0) { // inserting in front
       newNode.setNext(head);
       head =  newNode;
-    }
-    else { // General case: need to move prev to index - 1
+    } else { // General case: need to move prev to index - 1
       // then insert the new node after it
       Node prev = head;
       int count = 0;
@@ -111,7 +109,7 @@ public class LinkedListExercise {
    * Remove the node after "previousNode". Return the value of the element at
    * the deleted node
    */
-  public int remove(Node previousNode) {
+  public int remove(Node previousNode) { //remove the element after the previous node
     if ((previousNode == null) || (previousNode.next() == null)) {
       System.out.println("Nothing to remove");
       return Integer.MAX_VALUE;
@@ -122,7 +120,6 @@ public class LinkedListExercise {
     if (previousNode.next() == tail) {
       previousNode.setNext(null);
       tail = previousNode;
-
     } else { // General case: delete node
       previousNode.setNext(previousNode.next().next());
     }
