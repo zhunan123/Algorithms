@@ -4,6 +4,11 @@ import java.util.Arrays;
 
 public class QuickSort {
 
+  /**
+   * worest case break list into size n-1 and 0 theta(n^2)
+   * best case break list n/2 theta(nlogn)
+   * */
+
   public static void swap(int ind1, int ind2, int[] arr) {
     int tmp = arr[ind1];
     arr[ind1] = arr[ind2];

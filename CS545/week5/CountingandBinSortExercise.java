@@ -5,6 +5,11 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 public class CountingandBinSortExercise {
+  /**
+   * if the list has n elements, all of which are in the range
+   * 0.....m
+   * running time is theta(n + m)
+   * */
 
   public static class CountingAndBinSortExercises {
     /**

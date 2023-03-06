@@ -5,6 +5,10 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class BucketSort {
+  /**
+   * worst case O(n^2) all element in the same bucket
+   * best case O(n) elements are distribute evenly across buckets
+   * */
 
   private static int computeBucketIndex(Elem ele, int size){
     return ele.getKey() / size;
