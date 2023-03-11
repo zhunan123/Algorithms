@@ -42,7 +42,12 @@ fprintf(stderr, "Options:\n"
 }
 
 
-
+/**
+ * Compare function for sorting by name
+ * @param a struct da_entry
+ * @param b struct da_entry
+ * @return negative if a > b, positive if a < b, 0 if a == b
+ */
 int compare_by_name(const void *a, const void *b) {
     struct da_entry *entry_a = (struct da_entry *) a;
     struct da_entry *entry_b = (struct da_entry *) b;
@@ -50,7 +55,12 @@ int compare_by_name(const void *a, const void *b) {
 }
 
 
-
+/**
+ * Compare function for sorting by size
+ * @param a struct da_entry
+ * @param b struct da_entry
+ * @return positive if a > b, negative if a < b, 0 if a == b
+ */
 int compare_by_size(const void *a, const void *b) {
     struct da_entry *entry_a = (struct da_entry *) a;
     struct da_entry *entry_b = (struct da_entry *) b;
@@ -66,7 +76,11 @@ int compare_by_time(const void *a, const void *b) {
 }
 
 
-
+/**
+ * Print the list of entries
+ * @param list list of entries
+ * @param limit number of entries to print
+ */
 void print_list(struct elist *list, size_t limit) {
     size_t elistSize = elist_size(list);
 
@@ -81,6 +95,7 @@ void print_list(struct elist *list, size_t limit) {
         struct da_entry *entry = elist_get(list, i);
         char size[64];
         char time[64];
+        // format the size and time
         human_readable_size(size, sizeof(size), (double) entry->size, 1);
         simple_time_format(time, sizeof(time), entry->time);
         printf("%10s | %11s | %s\n", size, time, entry->path);
@@ -88,18 +103,27 @@ void print_list(struct elist *list, size_t limit) {
 }
 
 
-
+/**
+ * Traverse the entries in the list and free the memory
+ * @param list list of entries
+ */
 void destruct_list(struct elist *list) {
     size_t size = elist_size(list);
     for (unsigned int i = 0; i < size; i++) {
         struct da_entry *entry = elist_get(list, i);
+        // free the path
         free(entry->path);
     }
+    //destroy the list
     elist_destroy(list);
 }
 
 
-
+/**
+ * Traverse the directory and store entries in the list
+ * @param list list of entries
+ * @param directory directory to traverse
+ */
 void traverse_directory(struct elist *list, char *directory) {
     DIR *dir = opendir(directory);
 
@@ -109,14 +133,17 @@ void traverse_directory(struct elist *list, char *directory) {
     }
 
     struct dirent *entry;
+    // traverse the directory
     while ((entry = readdir(dir)) != NULL) {
+        // skip the current and parent directories
         if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
             continue;
         }
+        // create the full path
         char *full_path = malloc(sizeof(char) *
                                  (strlen(directory) + strlen(entry->d_name) + strlen("/") + 1));
         sprintf(full_path, "%s/%s", directory, entry->d_name);
-
+        // if the entry is a directory, recursively traverse it
         if (entry->d_type == DT_DIR) {
             traverse_directory(list, full_path);
         } else {
@@ -128,6 +155,7 @@ void traverse_directory(struct elist *list, char *directory) {
                 LOG("Error: could not stat file [%s]\n", full_path);
                 continue;
             }
+            // copy the path to the da_entry
             char *entry_path = malloc(sizeof(char) * strlen(full_path) + 1);
             strcpy(entry_path, full_path);
 
@@ -135,9 +163,11 @@ void traverse_directory(struct elist *list, char *directory) {
             da_entry.size = st.st_size;
             da_entry.time = st.st_atime;
 
+            // add the entry to the list
             elist_add(list, &da_entry);
             LOG("Added [%s] to list, size: [%lu], time: [%lu]\n", full_path, st.st_size, st.st_atime);
         }
+        // free the full path
         free(full_path);
     }
     closedir(dir);
@@ -227,11 +257,15 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    // create new elist to store entries
     struct elist *list = elist_create(10, sizeof(struct da_entry));
 
+    // recursively traverse directory and store entries in list
     traverse_directory(list, options.directory);
 
+    // sort list by name first to make sure the output is in reversed alphabetical order
     elist_sort(list, compare_by_name);
+    // then sort list by size or time
     if (options.sort_by_time) {
         elist_sort(list, compare_by_time);
     } else {

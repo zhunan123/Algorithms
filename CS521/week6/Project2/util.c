@@ -22,13 +22,16 @@ void human_readable_size(char *buf, size_t buf_sz, double size, unsigned int dec
     //   1000 KB  = 1 MB     <---- no!
     //   1024 KiB = 1 MiB    <---- this is what we want
 
+    // literal array of suffixes
     static const char *suffixes[] = {"B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB"};
     int suffix_index = 0;
 
+    // divide by 1024 until we reach a suffix
     while (size >= 1024 && suffix_index < 7) {
         size /= 1024;
         suffix_index++;
     }
+    // print the size with the appropriate suffix
     snprintf(buf, buf_sz, "%.*f %s", decimal_place, size, suffixes[suffix_index]);
 }
 
