@@ -73,7 +73,15 @@ public class Mock {
 
     /* --------------------------------4-------------------------------- */
     /**
-     * 4.一颗二叉树的后序遍历序列为DBFEGCA，中序遍历为DBAFECG，则先序遍历为（ ）
+     * 4.一颗二叉树的后序遍历序列为DBFEGCA，中序遍历为DBAFECG，则先序遍历为（ A ）
+     *
+     *     A
+     *    / \
+     *   B   C
+     *  /   / \
+     * D  E   G
+     *   /
+     *  F
      * A. ABDCEFG
      * B. ADCDEFG
      * C. ADBFEGC
@@ -82,27 +90,58 @@ public class Mock {
 
     /* --------------------------------5-------------------------------- */
     /**
-     * 有一个有序表为{1，5，10，12，35，42，48，60，75，78，85，95，100}，当二分查找值为85的结点时，( )次比较后查找成功。
+     * 有一个有序表为{1，5，10，12，35，42，48，60，75，78，85，95，100}，当二分查找值为85的结点时，( 4 )次比较后查找成功。
      * */
 
     /* --------------------------------6-------------------------------- */
     /**
-     * 6.楼梯有10个阶梯,一次可以走一个、两个或三个阶梯,问有多少种上楼方式( )
+     * 6.楼梯有10个阶梯,一次可以走一个、两个或三个阶梯,问有多少种上楼方式( 274 )
      * */
+
+    public int climbStairs(int num) {
+        if (num == 1) { //only 1 step
+            return 1;
+        }
+        //1 step, 1 step
+        //2 step
+        if (num == 2) {
+            return 2;
+        }
+        // 1 step, 1 step, 1 step,
+        // 1 step, 2 step
+        // 2 step, 1 step
+        // 3 step
+        if (num == 3) {
+            return 4;
+        }
+
+        int[] arr = new int[num];
+        arr[0] = 1;
+        arr[1] = 2;
+        arr[2] = 4;
+
+        for( int i = 3; i < num; i++) {
+            arr[i] = arr[i - 1] + arr[i - 2] + arr[i - 3];
+        }
+
+        return arr[num - 1];
+    }
 
     /* --------------------------------7-------------------------------- */
     /**
-     * merge排序时间复杂度（），快排时间复杂度（），冒泡算法时间复杂度（）
+     * merge排序时间复杂度（θ(n*log(n))）
+     * 快排时间复杂---> best case break list n/2 theta(nlogn), average nlogn, worest case break list into size n-1 and 0 theta(n^2),
+     * 冒泡算法时间复杂度（n^2）
      * */
 
     /* --------------------------------8-------------------------------- */
     /**
-     * 栈的特点（），队列的特点（）
+     * 栈的特点（FILO），队列的特点（FIFO）
      * */
 
     /* --------------------------------9-------------------------------- */
     /**
-     * 以下这段代码的时间复杂度是( )
+     * 以下这段代码的时间复杂度是( log(n) )
      * void fun(int n){
      * int i=1;
      * while(i<=n)
@@ -123,7 +162,9 @@ public class Mock {
         int[][] intervals2 = {{1, 4}, {4, 5}};
 
 //        mk.findStartEndPos(arr, target);
-        mk.merge(intervals1);
-        mk.merge(intervals2);
+//        mk.merge(intervals1);
+//        mk.merge(intervals2);
+
+        mk.climbStairs(10);
     }
 }
