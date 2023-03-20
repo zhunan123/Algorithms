@@ -1,6 +1,7 @@
 package CS333.Project1;
 
 import java.io.*;
+import java.util.Arrays;
 
 public class MoviesScript {
 
@@ -14,12 +15,22 @@ public class MoviesScript {
 
       while (line != null) {
         String[] strArr = line.split(":");
+        int len = strArr.length;
         String movieid = strArr[0];
 
-        String title = strArr[1];
-        String new_title = title.split("[(]")[0].trim();
-        String new_year = title.split("[(]")[1].replace(")", "");
-        fw.write(movieid + ":" + new_title + ":" + new_year);
+        String[] title_array = Arrays.copyOfRange(strArr, 1, len - 1);
+        String titleAndYear = String.join(" ", title_array);
+
+        String[] title_arr = titleAndYear.split("[(]");
+        int len_title = title_arr.length;
+        String[] title = Arrays.copyOfRange(title_arr, 0, len_title - 1);
+        String title_str = String.join(" ", title).replace(")", "");
+
+        String[] year_arr = Arrays.copyOfRange(title_arr, len_title - 1, len_title);
+        String new_year = String.join(" ", year_arr).replace(")", "");
+
+
+        fw.write(movieid + ":" + title_str.trim() + ":" + new_year);
         fw.write("\n");
 
         line = br.readLine();
@@ -36,6 +47,6 @@ public class MoviesScript {
     MoviesScript ms = new MoviesScript();
     final String dir = System.getProperty("user.dir");
     System.out.println("current dir = " + dir);
-    ms.start("movies3.txt");
+    ms.start("movies.txt");
   }
 }
