@@ -55,11 +55,50 @@ public class UseridScript {
     }
   }
 
-  public static void main(String[] args) {
+  public void mergeFile(String filePath1, String filePath2) throws IOException {
+    BufferedReader reader1 = new BufferedReader(new FileReader(filePath1));
+    BufferedReader reader2 = new BufferedReader(new FileReader(filePath2));
+    BufferedWriter writer = new BufferedWriter(new FileWriter("new_users.txt"));
+
+    String line1 = reader1.readLine();
+    String line2 = reader2.readLine();
+
+    while (line1 != null || line2 != null) {
+      if (line1 != null && line2 != null) {
+        int num1 = Integer.parseInt(line1);
+        int num2 = Integer.parseInt(line2);
+
+        if (num1 <= num2) {
+          writer.write(String.valueOf(num1));
+          writer.newLine();
+          line1 = reader1.readLine();
+        } else {
+          writer.write(String.valueOf(num2));
+          writer.newLine();
+          line2 = reader2.readLine();
+        }
+      } else if (line1 != null) {
+        writer.write(line1);
+        writer.newLine();
+        line1 = reader1.readLine();
+      } else if (line2 != null) {
+        writer.write(line2);
+        writer.newLine();
+        line2 = reader2.readLine();
+      }
+    }
+
+    reader1.close();
+    reader2.close();
+    writer.close();
+  }
+
+  public static void main(String[] args) throws IOException {
     UseridScript us = new UseridScript();
     final String dir = System.getProperty("user.dir");
     System.out.println("current dir = " + dir);
 //    us.start("ratings.txt");
-    us.generateUniqieID("updated_tags.txt");
+//    us.generateUniqieID("updated_tags.txt");
+    us.mergeFile("users.txt", "unique_tags.txt");
   }
 }
