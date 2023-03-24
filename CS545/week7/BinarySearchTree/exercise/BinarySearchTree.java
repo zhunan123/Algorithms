@@ -48,10 +48,10 @@ public class BinarySearchTree {
         if (root == null) {
             return false;
         }
+        //recursive case
         if (elem == root.data) {
             return true;
         }
-        //recursive case
         if (elem < root.data) {
             return findRecursive(root.left, elem);
         } else {
