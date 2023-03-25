@@ -46,13 +46,14 @@ public class BinarySearchTree {
         //recursive case
         //base case
         if (root == null) {
+            System.out.println("false");
             return false;
         }
         //recursive case
         if (elem == root.data) {
+            System.out.println("true");
             return true;
-        }
-        if (elem < root.data) {
+        } else if (elem < root.data) {
             return findRecursive(root.left, elem);
         } else {
             return findRecursive(root.right, elem);
@@ -211,9 +212,48 @@ public class BinarySearchTree {
     }
 
     //delete
+    public BSTNode delete(BSTNode root, int elem) {
+        if (root == null) {
+            return null;
+        }
+
+        if (root.data == elem) {
+            if (root.left == null) {
+                return root.right;
+            }
+            if (root.right == null) {
+                return root.left;
+            }
+
+            if (root.right.left == null) {
+                root.data = root.right.data;
+                root.right = root.right.right;
+                return root;
+
+            } else {
+                root.data = findAndRemovedSmallest(root.right);
+                return root;
+            }
+
+        } else if (elem < root.data) {
+            root.left = delete(root.left, elem);
+            return root;
+        } else {
+            root.right = delete(root.right, elem);
+            return root;
+        }
+    }
 
     //remove smallest on the right side
-
+    private int findAndRemovedSmallest(BSTNode root) {
+        if (root.left.left == null) {
+            int smallest = root.left.data;
+            root.left = root.left.right;
+            return smallest;
+        } else {
+            return findAndRemovedSmallest(root.left);
+        }
+    }
     public static void main(String[] args) {
         BinarySearchTree tree = new BinarySearchTree();
         tree.insertIterative(17);
@@ -222,12 +262,12 @@ public class BinarySearchTree {
         tree.insertIterative(10);
         tree.insertIterative(3);
         tree.insertIterative(6);
-//        tree.insertIterative(4);
+        tree.insertIterative(9);
         tree.insertIterative(11);
         tree.insertIterative(25);
         tree.insertIterative(100);
 
-        tree.findIterative(12);
+//        tree.findIterative(12);
 
 //        tree.printPreOrder(tree.root);
 //        System.out.println("");
@@ -237,8 +277,10 @@ public class BinarySearchTree {
 //        int count = tree.countBSTNode(tree.root);
 //        int height = tree.findBSTHeight(tree.root);
 //        int count = tree.countLeafNodes(tree.root);
-        int sum = getSumOfAllNode(tree.root);
-        System.out.println(sum);
+//        int sum = getSumOfAllNode(tree.root);
+//        tree.findRecursive(tree.root, 26);
+        tree.delete(tree.root, 8);
+        tree.printPostOrder(tree.root);
     }
 
 }
