@@ -145,14 +145,70 @@ public class BinarySearchTree {
         }
     }
     //print post-order iterative
+    public void printPostOrderTraversalIterative(BSTNode root) {
+        BSTNode current = root;
+        Stack<BSTNode> stack = new Stack<>();
+
+        while (!stack.isEmpty() || current != null) {
+            if (current != null) {
+                stack.push(current);
+                current = current.left;
+            } else {
+                BSTNode temp = stack.peek().right;
+                if (temp == null) {
+                    temp = stack.pop();
+                    System.out.print(temp.data + " ");
+                    while (!stack.isEmpty() && temp == stack.peek().right) {
+                        temp = stack.pop();
+                        System.out.print(temp.data + " ");
+                    }
+                } else {
+                    current = temp;
+                }
+            }
+        }
+    }
 
     //count BST nodes
+    public int countBSTNode(BSTNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int count = countBSTNode(root.left) + countBSTNode(root.right);
+        return count + 1;
+    }
 
     //find BST heights
+    public int findBSTHeight(BSTNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int h = Math.max(findBSTHeight(root.left), findBSTHeight(root.right));
 
-    //count leaves
+        return h + 1;
+    }
+
+    //count leaves nodes
+    public int countLeafNodes(BSTNode root) {
+        if (root == null) {
+            return 0;
+        }
+        if (root.right == null && root.left == null) {
+            return 1;
+        }
+
+        return countLeafNodes(root.left) + countLeafNodes(root.right);
+    }
 
     //sum of all nodes
+    public static int getSumOfAllNode(BSTNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int sum = getSumOfAllNode(root.left) + getSumOfAllNode(root.right);
+
+        return root.data + sum;
+    }
 
     //delete
 
@@ -166,6 +222,7 @@ public class BinarySearchTree {
         tree.insertIterative(10);
         tree.insertIterative(3);
         tree.insertIterative(6);
+//        tree.insertIterative(4);
         tree.insertIterative(11);
         tree.insertIterative(25);
         tree.insertIterative(100);
@@ -175,7 +232,13 @@ public class BinarySearchTree {
 //        tree.printPreOrder(tree.root);
 //        System.out.println("");
 //        tree.printPostOrder(tree.root);
-        tree.preOrderIterative(tree.root);
+//        tree.preOrderIterative(tree.root);
+//        tree.printPostOrderTraversalIterative(tree.root);
+//        int count = tree.countBSTNode(tree.root);
+//        int height = tree.findBSTHeight(tree.root);
+//        int count = tree.countLeafNodes(tree.root);
+        int sum = getSumOfAllNode(tree.root);
+        System.out.println(sum);
     }
 
 }
