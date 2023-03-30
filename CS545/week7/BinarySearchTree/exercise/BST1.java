@@ -126,10 +126,10 @@ public class BST1 {
             while (!stack.isEmpty()) {
                 BSTNode temp = stack.pop();
                 System.out.print(temp.data + " ");
-                if (temp.left != null) {
+                if (temp.right != null) {
                     stack.push(temp.right);
                 }
-                if (temp.right != null) {
+                if (temp.left != null) {
                     stack.push(temp.left);
                 }
             }
@@ -184,7 +184,23 @@ public class BST1 {
     }
 
     public void inOrderIterative(BSTNode root) {
-
+        if (root == null) {
+            return;
+        }
+        Stack<BSTNode> stack = new Stack<>();
+        while(true) {
+            if (root != null) {
+                stack.push(root);
+                root = root.left;
+            } else {
+                if (stack.isEmpty()) {
+                    break;
+                }
+                root = stack.pop();
+                System.out.print(root.data);
+                root = root.right;
+            }
+        }
     }
 
     //count BST nodes
@@ -239,9 +255,6 @@ public class BST1 {
         tree.insertIterative(8);
         tree.insertIterative(5);
         tree.insertIterative(10);
-        tree.insertIterative(3);
-        tree.insertIterative(6);
-        tree.insertIterative(11);
         tree.insertIterative(25);
         tree.insertIterative(100);
 
@@ -250,10 +263,10 @@ public class BST1 {
 //        tree.printPreOrder(tree.root);
 //        System.out.println("");
 //        tree.printPostOrder(tree.root);
-//        tree.preOrderIterative(tree.root);
+        tree.preOrderIterative(tree.root);
 
-        int count = tree.countBSTNode(tree.root);
-        System.out.println(count);
+//        int count = tree.countBSTNode(tree.root);
+//        System.out.println(count);
 //        int height = tree.findBSTHeight(tree.root);
 //        int count = tree.countLeafNodes(tree.root);
 //        int sum = getSumOfAllNode(tree.root);

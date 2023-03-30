@@ -33,7 +33,11 @@ public class ImplementQueueUsingArray {
     tail = (tail + 1 ) % size;
   }
 
-  public Object dequeue(Object elem) {
+  public boolean isEmpty() {
+    return head == tail;
+  }
+
+  public Object dequeue() {
     //check if the queue is empty, when tail is head
     if (tail == head) {
       return null;

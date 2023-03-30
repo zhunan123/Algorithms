@@ -10,8 +10,8 @@ public class SearchinBinarySearchTree {
    *
    * Example 1:
    *
-   *
-   * Input: root = [4,2
+   *Input: root = [4,2,7,1,3], val = 2
+   * Output: [2,1,3]
    * */
 
   public TreeNode searchBST(TreeNode root, int val) {

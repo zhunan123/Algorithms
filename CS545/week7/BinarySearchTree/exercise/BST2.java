@@ -5,6 +5,7 @@ import java.util.Stack;
 public class BST2 {
 
   private class BSTNode {
+    public BSTNode[] children;
     int data;
     BSTNode left;
     BSTNode right;
@@ -238,6 +239,21 @@ public class BST2 {
     return height + 1;
   }
 
+  public int getHeight2(BSTNode root) {
+    if (root == null) {
+      return 0;
+    }
+
+    int maxHeight = 0;
+    for (int i = 0; i < 2; i++) {
+      int currHeight = getHeight2(root.children[i]);
+      if (currHeight > maxHeight) {
+        maxHeight = currHeight;
+      }
+    }
+    return maxHeight + 1;
+  }
+
   //count leaves
   public int countLeaf(BSTNode root) {
     if (root == null) {
@@ -310,17 +326,17 @@ public class BST2 {
     tree.insertIterative(6);
     tree.insertIterative(10);
     tree.insertIterative(3);
-    tree.insertIterative(7);
+    tree.insertIterative(5);
     tree.insertIterative(9);
     tree.insertIterative(11);
     tree.insertIterative(25);
     tree.insertIterative(100);
 
-    tree.delete(tree.root, 8);
+//    tree.delete(tree.root, 8);
 
 
 
-        tree.printPreOrder(tree.root);
+//        tree.printPreOrder(tree.root);
 //        System.out.println("");
 //        tree.printPostOrder(tree.root);
 //        tree.preOrderIterative(tree.root);
@@ -329,6 +345,8 @@ public class BST2 {
 //    int count = tree.countBSTNode(tree.root);
 //    System.out.println(count);
 //        int height = tree.findBSTHeight(tree.root);
+    int height = tree.getHeight2(tree.root);
+    System.out.println(height);
 //        int count = tree.countLeaf(tree.root);
 //    System.out.println(count);
 //        int sum = getSumOfAllNode(tree.root);
