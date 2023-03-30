@@ -29,3 +29,9 @@ zshuai   3827619  0.0  0.0   7704  2252 pts/2    R+   00:18   0:00 ps aux
 2
 [zshuai@zshuai-vm nth-day] $ htop
 [zshuai@zshuai-vm nth-day]$ uptime (tell load average, how many time your machine is up)
+[zshuai@zshuai-vm nth-day]$ ps aux | grep a.out   (grep is finding a particular file, in this case is find the details of a.out file)
+zshuai   3854625  0.0  0.0   2484   700 pts/2    S+   10:46   0:00 ./a.out
+zshuai   3854696  0.0  0.0   3976  1616 pts/1    S+   10:46   0:00 grep a.out
+[zshuai@zshuai-vm nth-day]$ kill -s SIGSEGV 3854625 (kill the process with seg fault, but we can block the seg fault signal)
+[zshuai@zshuai-vm nth-day]$ kill -9 3854625 / kill -s SIGKILL 3854625(brutal kill) / kill -9 %%
+[zshuai@zshuai-vm nth-day]$ ctrl-z to stop then fg to continue 

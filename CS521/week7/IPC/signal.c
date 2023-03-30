@@ -29,6 +29,9 @@ int main(void) {
 
     /* Set up our signal handler. SIGINT can be sent via Ctrl+C */
     signal(SIGINT, sigint_handler);
+    // signal(SIGQUIT, sigint_handler);
+    // signal(SIGSEGV, sigint_handler);
+
 
     while (true) {
         count++;

@@ -63,3 +63,5 @@ bin  boot  bootstrap.sh  dev  etc  home  lib  lib64  mnt  opt  proc  root  run  
 [zshuai@zshuai-vm L5-zhunan123]$ LD_PRELOAD=$(pwd)/allocator.so ls
 [zshuai@zshuai-vm L5-zhunan123]$ LD_PRELOAD=$(pwd)/allocator.so strace --summary-only ls  (this with customized allocator)
 [zshuai@zshuai-vm L5-zhunan123]$ cc allocator.c -Wall -fPIC -shared -DLOGGER=0 -DTRACE_ON=0 -o allocator.so
+[zshuai@zshuai-vm L5-zhunan123]$ kill -s SIGUSER1 3324
+[zshuai@zshuai-vm L5-zhunan123]$ grep neato (search for file called neato)
