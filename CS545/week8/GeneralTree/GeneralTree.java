@@ -159,4 +159,12 @@ public class GeneralTree {
 
   }
 
+  //find # of leaf
+
+
+  //find # of nodes
+
+
+  //find sum of all nodes
+
 }
