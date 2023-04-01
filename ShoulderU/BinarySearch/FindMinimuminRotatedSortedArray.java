@@ -36,7 +36,7 @@ public class FindMinimuminRotatedSortedArray {
      * 153.find minimum in rotated sorted array
      * [0,1,2,4,5,6,7] if midpoint is less than the last element, then we know, then we know smallest is on the left
      * [4,5,6,7,0,1,2] if the midpoint is greater than last element then we know the smallest is on the right
-     * return Math.min(nums[high], nums[low]); 因为[11,13,15,17]的时候nums[low] 最小[11,13,15,17] nums[high]最小
+     * return Math.min(nums[high], nums[low]); 因为[11,13,15,17]的时候nums[low] 最小[4,5,6,7,0,1,2] nums[high]最小
      * */
 
     public int findMin(int[] nums) {
