@@ -23,18 +23,26 @@ public class FirstBadVersion {
      * */
 
     public int firstBadVersion(int n) {
+
+        //find the first bad version with first_pos, idea if we found the target(isBadVersion(mid), then we know the
+        //first target is in the left. update first_pos to mid, and update high to mid -1, else is not bad version
+        //then we know the target is in the right side of mid
         int low = 1;
         int high = n;
+        int first_pos = -1;
 
-        while (low < high) {
+        while (low <= high) {
             int mid = low + (high - low) / 2;
             if (isBadVersion(mid)) {
-                high = mid;
+                //if find, the first bad should be on the left
+                high = mid - 1;
+                first_pos = mid;
             } else {
+                //did not find the first bad, so the first bad should on the right
                 low = mid + 1;
             }
         }
-        return high;
+        return first_pos;
     }
 
     private boolean isBadVersion(int mid) {
