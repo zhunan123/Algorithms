@@ -315,7 +315,7 @@ public class BST2 {
       root.left = root.left.right;
       return smallest;
     } else {
-      return findAndRemoveSmallest(root.left.left);
+      return findAndRemoveSmallest(root.left);
     }
   }
 
