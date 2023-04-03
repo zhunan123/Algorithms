@@ -148,7 +148,7 @@ public class GeneralTree {
       TreeNode node = (TreeNode) q.dequeue();
       System.out.print(node.data + " ");
 
-      TreeNode current = root.leftChild;
+      TreeNode current = node.leftChild;
       while (current != null) {
         q.enqueue(current);
         current = current.rightChild;
