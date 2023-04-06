@@ -1,0 +1,22 @@
+build heap 2 method insert by pushing up and build from bottom up by push down
+1.dont understand how min heap sort works, can you give me a example, why it reauires extra memory space? 3 1 7 2 5 4, it that means we create a new array, each time we call remove min we nned to put the removed min element at the begining of the array?
+2.so want to insert into min heap is actually pushing up, build min heap bottom up is pusing down since we need removeMin(),
+3.but when we build the max heap. build the max heap same way from buttom up means push down
+4.do we need to upderstand the heap sort coding part using both min heap and max heap mehtod? do in the exam will only be graphs
+
+steps of max heap sort
+1.assume the max heap is already sorted
+2.build the max heap from bottom up, and need to updated the indexes in the array when changeing element place
+3.swap the root(greates value in max heap) with the max heap size(last element), and update array index (remove max and put on the end of array)
+4.then need to reshape the max heap index after switching top and size and update array index after switching
+5.reduced size
+6.repeat the above step until we sort the heap.
+
+steps for min heap sort——the original array will be sorted in the decending order
+1.need to crete a new copied array
+2.assume min heap is already sorted
+3.build the min heap from bottom up (means find root element and compare with child, find smallest child and swap if child is smaller than root val)
+4.swap the top/root(smallest elem) with size of heap (last element), and update index, (remove min), add the min in to beginning of copied array
+5.reshape the min heap and updated index
+6.reduce size
+7.repeat and until the copied array is finshed and sorted
