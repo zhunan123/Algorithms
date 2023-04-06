@@ -267,14 +267,16 @@ public class BST3 {
             } else if (root.left == null) {
                 return root.right;
             } else {
-                //did not in first pass
+                //this part is we find smallest directly, which is root.right node
+                //since root.right.left is null
                 if (root.right.left == null) {
                     root.data = root.right.data;
                     root.right = root.right.right;
                     return root;
 
                 } else {
-                    // need to find in second pass
+                    //otherwise we did not find the smallest directly
+                    //we need to call function findAndRemoveSmallest and recursively find the smallest
                     root.data = findAndRemoveSmallest(root.right);
                     return root;
                 }
@@ -301,16 +303,6 @@ public class BST3 {
 
     public static void main(String[] args) {
         BST3 tree = new BST3();
-//        tree.insertIterative(17);
-//        tree.insertIterative(8);
-//        tree.insertIterative(6);
-//        tree.insertIterative(10);
-//        tree.insertIterative(3);
-//        tree.insertIterative(5);
-//        tree.insertIterative(9);
-//        tree.insertIterative(11);
-//        tree.insertIterative(25);
-//        tree.insertIterative(100);
 
         tree.insert(17);
         tree.insert(8);
