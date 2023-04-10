@@ -1,0 +1,19 @@
+cat file.txt | tr upper lower | sed(parent)
+sed: stream editor print to terminal
+while (we have more pipe requires "|"){
+    create pipe;
+    fork //clone process
+    if child {
+        send stdout to pipe;
+        exec cmd //1. cat
+    }
+    if parent {
+        read stdin from pipe
+    }
+}
+
+pthreads - posix threads
+difference between process and threads
+threads use shared memory to communicate
+
+cc -pthreads thread_hello.c
