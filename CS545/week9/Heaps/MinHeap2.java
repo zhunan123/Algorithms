@@ -110,6 +110,11 @@ public class MinHeap2 {
   }
 
   public void buildMinHeapFromBottomUp(int[] heap) {
+    //idea is find the last non-leaf is n / 2, write a for loop from last non-leaf to position 1
+    //since 0 is negative infinity, for each non-leaf nodes we only need to do push down
+    //for each non-leaf node, do push down to make each mini heap into min heap
+    //then when we loop back until to first non-leaf node, so the entire heap will be sorted into min heap
+    //in this case, the min heap is done building from the bottom up.
     int size = heap.length - 1;
     for (int i = size / 2; i > 0; i--) {
       pushDown2(heap, i);
