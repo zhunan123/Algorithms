@@ -9,13 +9,19 @@ public class MinHeap2 {
   public MinHeap2(int max) {
     maxSize = max;
     heap = new int[maxSize];
-    size = 0;
+    size = 0; // we didn't count heap[0] = Integer.MIN_VALUE
     heap[0] = Integer.MIN_VALUE;
   }
 
   public void print() {
     for (int i = 0; i < heap.length; i++) {
       System.out.println(heap[i] + " ");
+    }
+  }
+
+  public void print2(int[] arr) {
+    for (int i = 0; i < arr.length; i++) {
+      System.out.print(arr[i] + " ");
     }
   }
 
@@ -40,7 +46,15 @@ public class MinHeap2 {
   }
 
   private boolean isLeaf(int pos) {
-    if (pos > size / 2 && pos < size) {
+    if (pos > size / 2 && pos <= size) {
+      return true;
+    }
+    return false;
+  }
+
+  private boolean isLeaf2(int pos, int[] arr) {
+    int size = arr.length - 1;
+    if (pos > size / 2 && pos <= size) {
       return true;
     }
     return false;
@@ -50,6 +64,12 @@ public class MinHeap2 {
     int temp = heap[pos1];
     heap[pos1] = heap[pos2];
     heap[pos2] = temp;
+  }
+
+  public void swap2(int pos1, int pos2, int[] arr) {
+    int temp = arr[pos1];
+    arr[pos1] = arr[pos2];
+    arr[pos2] = temp;
   }
 
   public void insert(int elem) {
@@ -87,36 +107,48 @@ public class MinHeap2 {
 
       pos = smallest; // update pos position
     }
+  }
 
-//    while (!isLeaf(pos)) {
-//      int smallest = leftChild(pos);
-//      if (rightChild(pos) <= size) {
-//        if (heap[rightChild(pos)] < heap[smallest]) {
-//          smallest = rightChild(pos);
-//        }
-//      }
-//
-//
-//      if (heap[smallest] < heap[pos]) {
-//        swap(pos, smallest);
-//      } else {
-//        break;
-//      }
-//      pos = smallest;
-//    }
+  public void buildMinHeapFromBottomUp(int[] heap) {
+    int size = heap.length - 1;
+    for (int i = size / 2; i > 0; i--) {
+      pushDown2(heap, i);
+    }
+  }
+
+  public void pushDown2(int[] arr, int pos) {
+    while (!isLeaf2(pos, arr)) {
+      int smallest = leftChild(pos);
+      if (rightChild(pos) <= arr.length - 1) {
+        if (arr[rightChild(pos)] < arr[smallest]) {
+          smallest = rightChild(pos);
+        }
+      }
+      if (arr[smallest] < arr[pos]) {
+        swap2(pos, smallest, arr);
+      } else {
+        break;
+      }
+
+      pos = smallest; // update pos position
+    }
   }
 
   public static void main(String[] args) {
     MinHeap2 heap = new MinHeap2(10);
-    heap.insert(14);
-    heap.insert(16);
-    heap.insert(5);
-    heap.insert(4);
-    heap.insert(1);
+//    heap.insert(14);
+//    heap.insert(16);
+//    heap.insert(5);
+//    heap.insert(4);
+//    heap.insert(1);
+//
+//    heap.removeMin();
 
-    heap.removeMin();
+//    heap.print();
 
-    heap.print();
-
+//    int[] array = {2 ,5 ,8 ,10 ,11 ,1, 12, 9, 4, 0, 7};
+        int[] array = {Integer.MIN_VALUE, 14, 16, 5, 4, 1};
+    heap.buildMinHeapFromBottomUp(array);
+    heap.print2(array);
   }
 }
