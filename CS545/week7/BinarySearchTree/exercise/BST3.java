@@ -37,6 +37,20 @@ public class BST3 {
         return false;
     }
 
+    public boolean findIterative2(int elem) {
+        BSTNode current = root;
+        while (current != null) {
+            if (elem == current.data) {
+                return false;
+            } else if (elem < current.data) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+        return false;
+    }
+
     public boolean findRecursive(BSTNode root, int elem) {
         if (root == null) {
             System.out.print("false");
@@ -45,6 +59,20 @@ public class BST3 {
 
         if (root.data == elem) {
             System.out.println("true");
+            return true;
+        } else if (elem < root.data) {
+            return findRecursive(root.left, elem);
+        } else {
+            return findRecursive(root.right, elem);
+        }
+    }
+
+    public boolean findRecursive2(BSTNode root, int elem) {
+        if (root == null) {
+            return false;
+        }
+
+        if (elem == root.data) {
             return true;
         } else if (elem < root.data) {
             return findRecursive(root.left, elem);
@@ -131,6 +159,25 @@ public class BST3 {
         }
     }
 
+    public void printPreOrderIterative2(BSTNode root) {
+        if (root == null) {
+            return;
+        }
+
+        Stack<BSTNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            root = stack.pop();
+            System.out.println(root);
+            if (root.right != null) {
+                stack.push(root.right);
+            }
+            if (root.left != null) {
+                stack.push(root.left);
+            }
+        }
+    }
+
     public void printPostOrder(BSTNode root) {
         if (root != null) {
             printPostOrder(root.left);
@@ -198,6 +245,31 @@ public class BST3 {
        }
     }
 
+    public void printInOrderIterative2(BSTNode root) {
+        //idea goers to left most root means no left child, and pushed the node to stack along the way
+        //so the top will be the left most node
+        //if root ==  null, pop stack top and sout it(this is print the root), which is the left most node
+        //than goes to root.right
+        //if null, return back to previous level which is stack top. and pop
+        if (root == null) {
+            return;
+        }
+        Stack<BSTNode> stack = new Stack<>();
+        while (true) {
+            if (root != null) {
+                stack.push(root);
+                root = root.left;
+            } else {
+                if (stack.isEmpty()) {
+                    break;
+                }
+                BSTNode popped = stack.peek();
+                System.out.println(popped.data);
+                root = popped.right;
+            }
+        }
+    }
+
     public int countBSTNode(BSTNode root) {
         if (root == null) {
             return 0;
@@ -260,6 +332,13 @@ public class BST3 {
         if (root == null) {
             return null;
         }
+        //delete idea
+        //first need to find the delete node, if smaller then root goes left, if greater than root goes right
+        //when found the deleted, idea is find the smallest in the right hand side, swap with the deleted item and item the smallestes
+        // three condition first, root only has left children, , return left children, only have right children, return right children
+        // third have 2 child,first condition find smallest directly,  need to check root.right.left if is null, is null means root.right is smallest
+        //swap with root.right.data, than make root.right = root.right.right.return root
+        //second condition did not find smallest directly, call findandremovesmallest and pass root.right.
 
         if (elem == root.data) {
             if (root.right == null) {
