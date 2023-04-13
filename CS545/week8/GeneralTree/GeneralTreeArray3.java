@@ -1,13 +1,13 @@
 package CS545.week8.GeneralTree;
 
 public class GeneralTreeArray3 {
-    private class TreeNode {
+    private static class TreeNode {
         int data;
-        TreeNode leftChild;
-        TreeNode rightChild;
-        TreeNode parent;
+        TreeNode[] children = new TreeNode[3];
 
-        TreeNode[] children;
+        TreeNode(int newdata) {
+            data = newdata;
+        }
     }
 
     private TreeNode root;
@@ -79,5 +79,37 @@ public class GeneralTreeArray3 {
         }
 
         return count + 1;
+    }
+
+    public static void main(String[] args) {
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node5 = new TreeNode(5);
+        TreeNode node6 = new TreeNode(6);
+        TreeNode node7 = new TreeNode(7);
+        TreeNode node8 = new TreeNode(8);
+        TreeNode node9 = new TreeNode(9);
+
+        node1.children[0] = node2;
+        node1.children[1] = node3;
+        node1.children[2] = node4;
+        node2.children[0] = node5;
+        node2.children[1] = node6;
+        node3.children[1] = node7;
+        node4.children[1] = node8;
+        node4.children[2] = node9;
+
+        GeneralTreeArray3 tree = new GeneralTreeArray3();
+
+        int height = tree.getHeight(node1);
+        System.out.println("tree height: " + height);
+
+        int count = tree.countNodes(node1);
+        System.out.println("Count nodes: " + count);
+
+        int count2 = tree.countLeaf(node1);
+        System.out.println("count leaf: " + count2);
     }
 }
