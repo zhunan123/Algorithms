@@ -1,6 +1,6 @@
 package CS545.week8.GeneralTree;
 
-public class GeneralTreeArray2 {
+public class GeneralTreeArray3 {
     private class TreeNode {
         int data;
         TreeNode leftChild;
@@ -12,43 +12,32 @@ public class GeneralTreeArray2 {
 
     private TreeNode root;
 
-    public int height(TreeNode root) {
+    public int getHeight(TreeNode root) {
         if (root == null) {
             return 0;
         }
+
         int maxH = 0;
         for (int i = 0; i < root.children.length; i++) {
-            int currH = height(root.children[i]);
+            int currH = getHeight(root.children[i]);
             if (currH > maxH) {
                 maxH = currH;
             }
         }
+
         return maxH + 1;
     }
 
-    public int height2(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        int maxH = 0;
-        for (int i =0; i < root.children.length; i++) {
-            int currH = height2(root.children[i]);
-            maxH = Math.max(maxH, currH);
-        }
-        return maxH + 1;
-    }
-
-    boolean isLeaf(TreeNode node) {
-        for (int i = 0; i < node.children.length; i++) {
-            if (node.children[i] == null) {
+    public boolean isLeaf(TreeNode root) {
+        for (int i = 0; i < root.children.length; i++) {
+            if (root.children[i] != null) {
                 return false;
             }
         }
         return true;
     }
 
-
-    public int countleaf(TreeNode root) {
+    public int countLeaf(TreeNode root) {
         if (root == null) {
             return 0;
         }
@@ -58,8 +47,8 @@ public class GeneralTreeArray2 {
         }
 
         int count = 0;
-        for (int i = 0 ; i < root.children.length; i++) {
-            count += countleaf(root.children[i]);
+        for (int i = 0; i < root.children.length; i++) {
+            count += countLeaf(root.children[i]);
         }
 
         return count;
@@ -69,11 +58,13 @@ public class GeneralTreeArray2 {
         if (root == null) {
             return 0;
         }
-
         int sum = 0;
         for (int i = 0; i < root.children.length; i++) {
+            //only need virtually go through each children of root
+            //dont need to worry about the children because recursion will take care of it
             sum += sum(root.children[i]);
         }
+
         return sum + root.data;
     }
 
@@ -81,11 +72,12 @@ public class GeneralTreeArray2 {
         if (root == null) {
             return 0;
         }
+
         int count = 0;
         for (int i = 0; i < root.children.length; i++) {
             count += countNodes(root.children[i]);
         }
+
         return count + 1;
     }
-
 }
