@@ -140,6 +140,9 @@ public class BST3 {
     }
 
     public void printPreOrderIterative(BSTNode root) {
+        //first check if root empty, build stack and push root
+        //2.while stack is not empty, pop and print top
+        //3.if poped elem has right, push right, has left, push left
         if (root == null){
             System.out.println("Nothing to print");
         } else {
@@ -323,6 +326,9 @@ public class BST3 {
             return 0;
         }
 
+        //here do not need sum += which is diff from general tree
+        //because BST only have 2 children,
+        //and we are return sum for each children using recursion
         int sum = sum(root.left) + sum(root.right);
 
         return sum + root.data;
@@ -346,16 +352,14 @@ public class BST3 {
             } else if (root.left == null) {
                 return root.right;
             } else {
-                //this part is we find smallest directly, which is root.right node
-                //since root.right.left is null
+                //found directly the right child is the smallest,  check the root element if is smallest
                 if (root.right.left == null) {
                     root.data = root.right.data;
                     root.right = root.right.right;
                     return root;
 
                 } else {
-                    //otherwise we did not find the smallest directly
-                    //we need to call function findAndRemoveSmallest and recursively find the smallest
+                    // right child is not smallest, need to find smallest on second pass
                     root.data = findAndRemoveSmallest(root.right);
                     return root;
                 }
@@ -380,38 +384,65 @@ public class BST3 {
         }
     }
 
+    public int sumLeaf(BSTNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        if (root.left == null && root.right == null) {
+            return root.data;
+        }
+
+        int sum = sumLeaf(root.left) + sumLeaf(root.right);
+
+        return sum;
+    }
+
     public static void main(String[] args) {
         BST3 tree = new BST3();
+//        tree.insertIterative(17);
+//        tree.insertIterative(8);
+//        tree.insertIterative(6);
+//        tree.insertIterative(10);
+//        tree.insertIterative(3);
+//        tree.insertIterative(5);
+//        tree.insertIterative(9);
+//        tree.insertIterative(11);
+//        tree.insertIterative(25);
+//        tree.insertIterative(100);
 
         tree.insert(17);
         tree.insert(8);
         tree.insert(6);
         tree.insert(10);
-        tree.insert(3);
-        tree.insert(5);
-        tree.insert(9);
-        tree.insert(11);
-        tree.insert(13);
+//        tree.insert(3);
+//        tree.insert(5);
+//        tree.insert(9);
+//        tree.insert(11);
+//        tree.insert(13);
         tree.insert(25);
         tree.insert(100);
 
 //        tree.printPreOrder(tree.root);
 //        tree.printPreOrderIterative(tree.root);
 //        tree.printPostOrder(tree.root);
-        tree.printPostOrderIterative(tree.root);
-        System.out.println();
-        tree.printInOrder(tree.root);
-        System.out.println();
-        tree.printInOrderIterative(tree.root);
-        System.out.println();
-        int count = tree.countBSTNode(tree.root);
-        System.out.println(count);
-        int height = tree.height(tree.root);
-        System.out.println(height);
-        int leaf = tree.countLeaf(tree.root);
-        System.out.println(leaf);
-        tree.findIterative(9);
-        tree.findRecursive(tree.root, 2);
+//        tree.printPostOrderIterative(tree.root);
+//        System.out.println();
+//        tree.printInOrder(tree.root);
+//        System.out.println();
+//        tree.printInOrderIterative(tree.root);
+//        System.out.println();
+//        int count = tree.countBSTNode(tree.root);
+//        System.out.println(count);
+//        int height = tree.height(tree.root);
+//        System.out.println(height);
+//        int leaf = tree.countLeaf(tree.root);
+//        System.out.println(leaf);
+//        tree.findIterative(9);
+//        tree.findRecursive(tree.root, 2);
+
+        int sum = tree.sumLeaf(tree.root);
+        System.out.println(sum);
     }
 
 }
