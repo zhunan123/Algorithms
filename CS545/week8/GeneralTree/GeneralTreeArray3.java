@@ -81,6 +81,19 @@ public class GeneralTreeArray3 {
         return count + 1;
     }
 
+    public void printPreOrder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        System.out.print(root.data + " ");
+        for(int i = 0; i < root.children.length; i++) {
+            printPreOrder(root.children[i]);
+        }
+        //when done with node print ")" since before for loop will loop all the children of the root node
+        //so when done with the for loop means done with all the children of the node and we can print ")" to close this node
+        System.out.print(")");
+    }
+
     public static void main(String[] args) {
         TreeNode node1 = new TreeNode(1);
         TreeNode node2 = new TreeNode(2);
@@ -111,5 +124,7 @@ public class GeneralTreeArray3 {
 
         int count2 = tree.countLeaf(node1);
         System.out.println("count leaf: " + count2);
+
+        tree.printPreOrder(node1);
     }
 }
