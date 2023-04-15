@@ -150,9 +150,20 @@ public class MinHeap2 {
 //    heap.removeMin();
 
 //    heap.print();
+//    heap.insert(26);
+//    heap.insert(9);
+//    heap.insert(7);
+//    heap.insert(2);
+//    heap.insert(13);
+//    heap.insert(50);
+//    heap.insert(1);
+//    heap.insert(3);
+//    heap.insert(15);
+//    heap.insert(8);
+//    heap.insert(0);
 
 //    int[] array = {2 ,5 ,8 ,10 ,11 ,1, 12, 9, 4, 0, 7};
-        int[] array = {Integer.MIN_VALUE, 14, 16, 5, 4, 1};
+        int[] array = {Integer.MIN_VALUE, 26, 9, 7, 2, 13, 50, 1, 3, 15, 8, 0};
     heap.buildMinHeapFromBottomUp(array);
     heap.print2(array);
   }
