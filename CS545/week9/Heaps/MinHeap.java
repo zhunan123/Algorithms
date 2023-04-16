@@ -52,7 +52,7 @@ public class MinHeap {
             if (rightChild(pos) <= size) { // need to check if right child pos is exceed the current size of heap, check if right child exist
                 //but I want to know what condition will rightChild(pos) > size?
                 if (heap[smallest] > heap[rightChild(pos)]) {
-                    smallest = heap[rightChild(pos)];
+                    smallest = rightChild(pos);
                 }
             }
 
@@ -71,7 +71,7 @@ public class MinHeap {
 
     /**
      * step to remove min (push down/bubble down)
-     * 1.swap the smallest with the heap's size (the last elem in the heap array, and is size since we start at 1, heap[0] is negative infinity)
+     * 1.swap the smallest with the heap' s size (the last elem in the heap array, and is size since we start at 1, heap[0] is negative infinity)
      * 2.remove the min element
      * 3.now you are in top initial position, find the smallest child. if the smallest child is smaller then root parent elem,
      *      swap this root with smallest child, then keep pushing down(bubble down) current level to child level.
@@ -115,15 +115,28 @@ public class MinHeap {
 
     public static void main(String[] args) {
         MinHeap heap = new MinHeap(20);
-        heap.insert(14);
-        heap.insert(16);
-        heap.insert(5);
-        heap.insert(4);
+        heap.insert(26);
+        heap.insert(9);
+        heap.insert(7);
+        heap.insert(2);
+        heap.insert(13);
+        heap.insert(50);
+        heap.insert(1);
+        heap.insert(3);
+        heap.insert(15);
+        heap.insert(8);
         heap.insert(0);
 
         heap.print();
+        System.out.println("\n");
 
         heap.removeMin();//0, 4, 14, 16, 5
+//        heap.removeMin();//0, 4, 14, 16, 5
         heap.print(); //4, 5, 14, 16
+
+        System.out.println("\n");
+
+        heap.removeMin();
+        heap.print();
     }
 }
