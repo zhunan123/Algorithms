@@ -3,6 +3,9 @@ package CS545.week6.queue;
 public class Node {
   public Object element;
   public Node next;
+  public boolean isWord;
+  public String prefix;
+  public Node[] children;
 
   public Node(Object newelement) {
     element = newelement;
