@@ -152,4 +152,22 @@ public class CompactPrefixTree {
             throw new RuntimeException(e);
         }
     }
+
+    private boolean checkPrefix1(String prefix, Node node) {
+        if (node == null) {
+            return false;
+        }
+//        else if (node.prefix.equals(prefix)) {
+        else if (node.prefix.equals(prefix) && node.isWord) {
+            return true;
+        }
+        else if (node.prefix.startsWith(prefix)) {
+//            int index = ((int) node.prefix.charAt(prefix.length())) - ((int) 'a');
+            int index = node.prefix.charAt(prefix.length()) - 'a';
+            return checkPrefix1(node.prefix.substring(prefix.length()), node.children[index]);
+        }
+        else {
+            return false;
+        }
+    }
 }
