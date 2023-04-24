@@ -60,6 +60,7 @@ public class BFSDFS {
     void bfsQueue(Edge graph[], int vertexId, boolean visited[]) {
         ImplementQueueUsingArray queue = new ImplementQueueUsingArray();
         queue.enqueue(vertexId);
+        visited[vertexId] = true;
 
         while (!queue.isEmpty()) {
             int vertex = (int) queue.dequeue();
