@@ -39,6 +39,9 @@ public class CompactPrefixTree {
         //condition need to create a new node, only part of prefix and word is in common
         Node newNode = new Node(commonPrefix);
         node.prefix = suffix;
+        if (suffixWord.length() == 0) {
+            newNode.isWord = true;
+        }
         //handle suffix first
         newNode.children[suffix.charAt(0) - 'a'] = node;
         //handle suffixWord

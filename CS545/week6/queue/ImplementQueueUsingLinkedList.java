@@ -4,7 +4,7 @@ public class ImplementQueueUsingLinkedList {
   private Node head;
   private Node tail;
 
-  ImplementQueueUsingLinkedList() {
+  public ImplementQueueUsingLinkedList() {
     head = null;
     tail = null;
   }
@@ -34,5 +34,9 @@ public class ImplementQueueUsingLinkedList {
       tail = null;
     }
     return dequeuedItemValue;
+  }
+
+  public boolean isEmpty() {
+    return head == tail;
   }
 }

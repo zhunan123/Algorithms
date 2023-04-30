@@ -14,7 +14,7 @@ public class BinarySearchTree {
         }
     }
 
-    private BSTNode root;
+    BSTNode root;
 
     BinarySearchTree() {
         root = null;
@@ -157,8 +157,13 @@ public class BinarySearchTree {
             } else {
                 BSTNode temp = stack.peek().right;
                 if (temp == null) {
+                    //本来已经是最左边了，没有左边。同时也没有右边的话，就说明只有根了
+                    //就print根
                     temp = stack.pop();
                     System.out.print(temp.data + " ");
+                    //check if temp is stack.peek().right
+                    //看刚才popped的temp/下一层根是不是现在/上一层stack top的right
+                    //如果是上一层top的right就是刚才的temp，说明上一层root的左右根都print了, 要不就是无
                     while (!stack.isEmpty() && temp == stack.peek().right) {
                         temp = stack.pop();
                         System.out.print(temp.data + " ");
@@ -219,9 +224,11 @@ public class BinarySearchTree {
 
         if (root.data == elem) {
             if (root.left == null) {
+                //笔记上有记录
                 return root.right;
             }
             if (root.right == null) {
+                //笔记上有记录
                 return root.left;
             }
 
@@ -260,16 +267,12 @@ public class BinarySearchTree {
         tree.insertIterative(8);
         tree.insertIterative(5);
         tree.insertIterative(10);
-        tree.insertIterative(3);
-        tree.insertIterative(6);
-        tree.insertIterative(9);
-        tree.insertIterative(11);
         tree.insertIterative(25);
         tree.insertIterative(100);
 
 //        tree.findIterative(12);
 
-//        tree.printPreOrder(tree.root);
+        tree.printPreOrder(tree.root);
 //        System.out.println("");
 //        tree.printPostOrder(tree.root);
 //        tree.preOrderIterative(tree.root);
@@ -279,8 +282,8 @@ public class BinarySearchTree {
 //        int count = tree.countLeafNodes(tree.root);
 //        int sum = getSumOfAllNode(tree.root);
 //        tree.findRecursive(tree.root, 26);
-        tree.delete(tree.root, 8);
-        tree.printPostOrder(tree.root);
+//        tree.delete(tree.root, 8);
+//        tree.printPostOrder(tree.root);
     }
 
 }

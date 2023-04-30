@@ -40,7 +40,7 @@ public class GeneralTreeArray2 {
 
     boolean isLeaf(TreeNode node) {
         for (int i = 0; i < node.children.length; i++) {
-            if (node.children[i] == null) {
+            if (node.children[i] != null) {
                 return false;
             }
         }
