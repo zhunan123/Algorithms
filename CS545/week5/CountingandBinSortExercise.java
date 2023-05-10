@@ -80,9 +80,33 @@ public class CountingandBinSortExercise {
       }
     }
 
+    public static void basicCountingSort2(int[] arr, int maxValue) {
+      int[] counterArray = new int[maxValue + 1];
+      // Iterate over arr, and for each val = arr[i], increment counterArray[val].
+      // FILL IN CODE
+      for (int i = 0; i < arr.length; i++) {
+        counterArray[arr[i]]++;
+      }
+
+      // Iterate over the counter array, and use it to sort arr
+      // FILL IN CODE
+      int count = 0;
+      for (int i = 0; i < counterArray.length; i++) {
+        int freq = counterArray[i];
+        for (int j = 0; j < freq; j++) {
+          arr[count] = i;
+          count++;
+        }
+//        while (count < freq) { // cannot do like this need to reset count back to 0
+//          arr[count] = i;
+//          count++;
+//        }
+      }
+    }
+
     public static void main(String[] args) {
       int[] arr = {6, 9, 1, 5, 9, 0, 1, 9, 6, 4};
-      basicCountingSort(arr, 10);
+      basicCountingSort2(arr, 9);
       System.out.println(Arrays.toString(arr));
 
         /*

@@ -50,10 +50,46 @@ public class QuickSort {
     return i;
   }
 
-  public static void main(String[] args) {
-    int[] arr = {6, 5, 8, 9, 3, 10};
+  public static void quickSort2(int[] arr, int low, int high) {
+    int pivotIndex;
+    if (low < high) {
+      pivotIndex = partition2(arr, low, high);
+      quickSort2(arr, low, pivotIndex - 1);
+      quickSort2(arr, pivotIndex + 1, high);
+    }
 
-    quickSort(arr);
+  }
+
+  public static int partition2(int[] arr, int low, int high) {
+    int pivotIndex = (low + high) / 2;
+    int pivotElement = arr[pivotIndex];
+    swap(pivotIndex, high, arr);
+
+    int i = low;
+    int j = high - 1;
+    while (i <= j) {
+      while (i <= j && arr[i] < pivotElement) {
+        i++;
+      }
+      while (i <= j && arr[j] >= pivotElement) {
+        j--;
+      }
+
+      if (i <= j) {
+        swap(i, j, arr);
+        i++;
+        j--;
+      }
+    }
+    swap(i, high, arr);
+    return i;
+  }
+
+  public static void main(String[] args) {
+    int[] arr = {4, 7, 8, 3, 1, 2, 6};
+
+    quickSort2(arr, 0, arr.length - 1);
+//    quickSort(arr);
     System.out.println(Arrays.toString(arr));
   }
 }

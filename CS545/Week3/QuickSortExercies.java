@@ -29,6 +29,17 @@ public class QuickSortExercies {
     }
   }
 
+  public static void sort012(int[] arr) {
+    // FILL IN CODE:
+    // Repeat until i and j meet:
+    // Move i to the right as long as we are looking at a 0
+    // Move j to the left as long we are looking at a 1
+    // swap elements at i and j
+    int i = 0;
+    int j = arr.length - 1;
+
+  }
+
   /**
    * Sorts the array of Strings that contains only "A" and "B"
    * @param votes array of strings, where each string is either "A" or "B".

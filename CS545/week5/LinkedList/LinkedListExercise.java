@@ -23,7 +23,17 @@ public class LinkedListExercise {
       newNode.setNext(head);
       head = newNode;
     }
+  }
 
+  public void insertAtFront2(int elem) {
+    Node newNode = new Node(elem);
+    if (head == null) {
+      head = newNode;
+      tail = newNode;
+    } else {
+      newNode.setNext(head);
+      head = newNode;
+    }
   }
 
   /** Creates a new node with the given element and adds it to the back of the list
@@ -40,7 +50,18 @@ public class LinkedListExercise {
       tail.setNext(newNode);
       tail = newNode;
     }
+  }
 
+  public void append2(int elem) {
+    Node newNode = new Node(elem);
+    if (head == null) {
+      head = newNode;
+      tail = newNode;
+    } else {
+      newNode.setNext(null);
+      tail.setNext(newNode);
+      tail = newNode;
+    }
   }
 
   /** Prints all the nodes in the link list */
@@ -50,7 +71,18 @@ public class LinkedListExercise {
       System.out.println(current.elem());
       current = current.next();
     }
+  }
 
+  public void printNode2() {
+    if (head == null) {
+      return;
+    }
+
+    Node current = head;
+    while (current != null) {
+      System.out.print(current.elem() + " ");
+      current = current.next();
+    }
   }
 
   /** Return true if the given element is in the list
@@ -59,6 +91,17 @@ public class LinkedListExercise {
    * @return true if found the node with this value, false otherwise
    */
   public boolean find(int elem) {
+    Node current = head;
+    while (current != null) {
+      if (current.elem() == elem) {
+        return true;
+      }
+      current = current.next();
+    }
+    return false;
+  }
+
+  public boolean find2(int elem) {
     Node current = head;
     while (current != null) {
       if (current.elem() == elem) {
@@ -86,7 +129,7 @@ public class LinkedListExercise {
       // then insert the new node after it
       Node prev = head;
       int count = 0;
-      while (prev != null & (count < index - 1)) {
+      while (prev != null && (count < index - 1)) {
         prev = prev.next();
         count++;
       }
@@ -100,6 +143,34 @@ public class LinkedListExercise {
           newNode.setNext(null);
           prev.setNext(newNode);
           tail = newNode;
+        }
+      }
+    }
+  }
+
+  public void insertAtIndex(int index, int elem){
+    Node newNode = new Node(elem);
+    if (head == null) {
+      head = newNode;
+      tail = newNode;
+    } else if (index == 0) {
+      newNode.setNext(head);
+      head = newNode;
+    } else {
+      Node prev = head;
+      int count = 0;
+      while (prev != null && count < index - 1) { // find insert position which
+        prev = prev.next();
+        count++;
+      }
+      if (prev != null) {
+        if (prev == tail) {
+          newNode.setNext(null);
+          prev.setNext(newNode);
+          tail = newNode;
+        } else {
+          newNode.setNext(prev.next());
+          prev.setNext(newNode);
         }
       }
     }
@@ -124,6 +195,21 @@ public class LinkedListExercise {
       previousNode.setNext(previousNode.next().next());
     }
     return elem;
+  }
+
+  public int remove2(Node previousNode) {
+    if (previousNode == null || previousNode.next() == null) {
+      return 0;
+    }
+
+    int removed = previousNode.next().elem();
+    if (previousNode.next() == tail) {
+      previousNode.setNext(null);
+      tail = previousNode;
+    } else {
+      previousNode.setNext(previousNode.next().next());
+    }
+    return removed;
   }
 
   public Node tail() {
@@ -152,22 +238,24 @@ public class LinkedListExercise {
   }
 
   public static void main(String[] args) {
-//    LinkedListExercise list = new LinkedListExercise();
-//    list.insertAtFront(0);
-//    list.insertAtFront(9);
-//    list.insertAtFront(2);
-//    list.insertAtFront(3);
-//    list.insertAtFront(7);
-//    list.insertAtFront(1);
-//    list.insertAtFront(5);
-//    list.printNodes();
+    LinkedListExercise list = new LinkedListExercise();
+    list.insertAtFront(0);
+    list.insertAtFront(9);
+    list.insertAtFront(2);
+    list.insertAtFront(3);
+    list.insertAtFront(7);
+    list.insertAtFront(1);
+    list.insertAtFront(5);
+    list.printNodes();
+    list.insert(4, 6);
+    list.printNodes();
 
-    LinkedListExercise list1 = new LinkedListExercise();
-		list1.append(35);
-		list1.append(40);
-		list1.append(10);
-		list1.printNodes();
-    System.out.println("middle: " + list1.middleElement());
+//    LinkedListExercise list1 = new LinkedListExercise();
+//		list1.append(35);
+//		list1.append(40);
+//		list1.append(10);
+//		list1.printNodes();
+//    System.out.println("middle: " + list1.middleElement());
 //    Node head = list1.head;
 //    list1.remove(head);
 //    System.out.println("after removing the element after head");

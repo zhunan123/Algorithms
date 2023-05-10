@@ -23,6 +23,34 @@ public class InsertionSort {
     }
   }
 
+  public static void insertionSort2(int[] arr) {
+    int curr;
+    int j;
+    for (int i = 0; i < arr.length; i++) {
+      curr = i;
+      j = i - 1;
+      while (j >= 0 && arr[curr] < arr[j]) {
+        arr[j + 1] = arr[j];
+        j--;
+      }
+      arr[j + 1] = arr[curr];
+    }
+  }
+
+  public static void insertionSort3(int[] arr) {
+    int curr;
+    int j;
+    for (int i = 0; i < arr.length; i++) {
+      curr = i;
+      j = i - 1;
+      while (j >= 0 && arr[curr] < arr[j]) {
+        arr[j + 1] = arr[j];
+        j--;
+      }
+      arr[j + 1] = arr[curr];
+    }
+  }
+
   public static void insertionSort2(int[] arr, int lowindex, int highindex, boolean reversed) {
     int j;
     int cur;

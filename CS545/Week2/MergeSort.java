@@ -145,6 +145,48 @@ public class MergeSort {
     merge(arr, temp, low, mid, high);
   }
 
+  public static void mergeSort2(int[] arr, int[] temp, int low, int high) {
+    if (low >= high) {
+      return;
+    }
+    int mid = (low + high) / 2;
+    mergeSort2(arr, temp, low, mid);
+    mergeSort2(arr, temp, mid + 1, high);
+    merge2(arr, temp, low, mid, high);
+  }
+
+  private static void merge2(int[] arr, int[] temp, int low, int mid, int high) {
+    int i = low; // low in first arr
+    int j = mid + 1; // low in second arr
+    int k = low; // index of temp arr
+
+    while (k <= high) {
+      if (i > mid) {
+        temp[k] = arr[j];
+        j++;
+        k++;
+      } else if (j > high) {
+        temp[k] = arr[i];
+        i++;
+        k++;
+      } else {
+        if (arr[i] < arr[j]) {
+          temp[k] = arr[i];
+          i++;
+          k++;
+        } else {
+          temp[k] = arr[j];
+          j++;
+          k++;
+        }
+      }
+    }
+
+    for (int m = low; m <= high; m++) {
+      arr[m] = temp[m];
+    }
+  }
+
 
 
   public static void main(String[] args) {
@@ -152,15 +194,15 @@ public class MergeSort {
     int[] arr2 = {2, 4, 9, 14};
     int[] arr = {1, 5, 2, 8};
     int[] arr3 = {7, 3, 1, 6, 4, 5, 2};
-    System.out.println(Arrays.toString(arr1));
-    System.out.println(Arrays.toString(arr2));
+//    System.out.println(Arrays.toString(arr1));
+//    System.out.println(Arrays.toString(arr2));
 //    int[] result = merge(arr1, arr2);
 //    System.out.println(Arrays.toString(result));
 
-//    int[] temp = new int[arr.length];
+    int[] temp = new int[arr3.length];
 //    merge(arr, temp, 0, 1, 3);
 
-    mergeSort(arr3);
+    mergeSort2(arr3, temp, 0, arr3.length - 1);
     System.out.println(Arrays.toString(arr3));
   }
 }

@@ -42,6 +42,34 @@ public class BinSort {
     }
   }
 
+  public static void binSort2(Elem[] arr, int maxValue) {
+
+    LinkedList<Elem>[] bins = new LinkedList[maxValue + 1];
+
+    for (int i = 0; i <= maxValue; i++) {
+      bins[i] = new LinkedList<>();
+    }
+
+    for (int j = 0; j < arr.length; j++) {
+      int binId = arr[j].getKey();
+      bins[binId].add(arr[j]);
+    }
+
+    for (int k = 0; k < bins.length; k++) {
+      if (bins[k] == null) {
+        continue;
+      }
+      LinkedList<Elem> list = bins[k];
+      Iterator<Elem> it = list.iterator();
+      int count = 0;
+      while (it.hasNext()) {
+        Elem current = it.next();
+        arr[count] = current;
+        count++;
+      }
+    }
+  }
+
   public static void main(String[] args) {
     Elem[] elements = {
             new Elem(4, "A"), new Elem(0, "B"),

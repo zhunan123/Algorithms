@@ -411,17 +411,17 @@ public class BST3 {
 //        tree.insertIterative(25);
 //        tree.insertIterative(100);
 
-        tree.insert(17);
+        tree.insert(7);
         tree.insert(8);
         tree.insert(6);
-        tree.insert(10);
+//        tree.insert(10);
 //        tree.insert(3);
 //        tree.insert(5);
 //        tree.insert(9);
 //        tree.insert(11);
 //        tree.insert(13);
-        tree.insert(25);
-        tree.insert(100);
+//        tree.insert(25);
+//        tree.insert(100);
 
 //        tree.printPreOrder(tree.root);
 //        tree.printPreOrderIterative(tree.root);
@@ -443,6 +443,7 @@ public class BST3 {
 
         int sum = tree.sumLeaf(tree.root);
         System.out.println(sum);
+        tree.printPreOrder(tree.root);
     }
 
 }
