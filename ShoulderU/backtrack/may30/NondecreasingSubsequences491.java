@@ -32,6 +32,7 @@ public class NondecreasingSubsequences491 {
                 // to make sure first pass and the condition when is equal or increasing
                 // need to make sure this currentList.get(currentList.size() - 1) as well, since we need the nums[i - 1] might not be currentList.get
                 // (currentList.size() - 1), but we need currentList.get(currentList.size() - 1) here.
+                currentList.add(nums[i]);
                 backtrack(ans, currentList, nums, i + 1);
                 currentList.remove(currentList.size() - 1);
             }
