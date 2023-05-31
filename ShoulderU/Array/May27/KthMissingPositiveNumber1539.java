@@ -1,6 +1,22 @@
 package ShoulderU.Array.May27;
 
 public class KthMissingPositiveNumber1539 {
+
+    /**
+     * consider three condition, 1.missing all kth number before the first element,
+     * 2.missing the kth element within the nums array range,
+     * 3.missing the kth element after the last elements in the nums array.
+     * -----initilize the count how many missed integer, start the loop,
+     * case 1 missing all kth number before the first element,
+     * // count missed integer that before the first element,
+     * second condition missing the kth element within the nums array range,
+     * if arr[i] = 4, arr[i - 1] = 3, arr[i] - arr[i  - 1] - 1 = 0, means no missed int,
+     * but if arr[i] = 9, arr[i - 1] = 5, arr[i] - arr[i  - 1] - 1 = 3, means 3 missing integer,
+     * which is 6, 7, 8, so added 3 to the missed intger count; need to then go back to previous missedint,
+     * having result starting from the element before current position,
+     * case 3 missing the kth element after the last elements in the nums array.
+     * */
+
     // case 1: [3, 4, 5], k = 2, result = 2
     // case 2: [3, 4, 5, 9], k = 3, result = 6
     // case 3: [1, 2, 3], k = 2, result = 5

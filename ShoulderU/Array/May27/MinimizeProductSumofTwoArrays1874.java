@@ -3,6 +3,11 @@ package ShoulderU.Array.May27;
 import java.util.Arrays;
 
 public class MinimizeProductSumofTwoArrays1874 {
+    /**
+     * in order to find the minimum product sum of 2 array,
+     * sort the first array in ascending order and second array in descending/reverser increasding order,
+     * then take the product sum of each element, will find the minimum sum
+     * */
     public int minProductSum(int[] nums1, int[] nums2) {
         // sort 2 array
         Arrays.sort(nums1);

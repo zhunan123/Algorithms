@@ -5,6 +5,14 @@ import java.util.List;
 import java.util.Map;
 
 public class LetterCombinationsofaPhoneNumber17 {
+
+    /**
+     * // define ans, defind map, defind variables
+     * // define edge case,  define backtrack function return ans
+     * // base case, define recursive  case, start loop current key character in map, and add the following into the loop.
+     * define letterArray, add current char, go to next char, done with next char, backtrack to cuurent char,
+     * backtrack remove the last letter before goto next one
+     * */
     // create a ans list
     List<String> ans = new ArrayList<String>();
 

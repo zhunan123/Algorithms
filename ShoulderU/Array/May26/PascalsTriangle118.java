@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PascalsTriangle118 {
+    /**
+     * triangle[row][col] = triangle[row - 1][col - 1] + triangle[row - 1][col]
+     * */
     public List<List<Integer>> generate(int numRows) {
         // create ans list
         List<List<Integer>> ans = new ArrayList<>();
