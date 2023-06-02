@@ -32,7 +32,7 @@ public class LongestValidParentheses32 {
                     stack.push(i);
                 } else {
                     //计算longest
-                    // 如果是) 并且stack pop完不为空，就说明找到valid parathesist, 更新longest, stack.peek()是当前边界所在的位置
+                    // 如果是) 并且stack pop完不为空，就说明找到valid parathesist, 更新longest, stack.peek()是当前边界所在的位置, 也有可能是上个opening bracket 的位置
                     longest = Math.max(longest, i - stack.peek());
                 }
             }
