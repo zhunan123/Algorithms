@@ -15,6 +15,7 @@ public class SimplifyPath71 {
    * idea: first split the string, then if compoennt is empty string and . continue
    * if if component is .. need to back up 1 level so stack pop
    * else if is letter words or ... other stuff just added into stack
+   * finally loop stack from bot to up, add "/" to each string component in stack.
    * */
   public String simplifyPath(String path) {
     // split the original path with dellimeter "/"
