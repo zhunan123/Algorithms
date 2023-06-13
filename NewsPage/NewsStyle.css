@@ -1,0 +1,48 @@
+.news-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+
+  .article {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 4px;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+
+  .learn-more-detail {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .learn-more-detail button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .article-author {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 8px;
+  }
