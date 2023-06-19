@@ -1,4 +1,6 @@
-package ShoulderU.RecursionTree;
+package ShoulderU.RecursionTree.june18;
+
+import ShoulderU.RecursionTree.june18.ListNode;
 
 public class MergeTwoSortedList21 {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
