@@ -38,6 +38,7 @@ public class SlidingWindowMaximum239 {
 
             // add left most max value to output array
             // take [8,7,6,9] k = 2 as example, say now we in value 7, index i = 1, k =2 , i >= k - 1, we start to add this into output array, i - k + 1 = 0, add deque.peelFirst() which is 8 to ouput array.
+            // add max to output array from position index 0, every round with need to add the max to output array
             if (i >= k - 1) {
                 ans[i - k + 1] = nums[deque.peekFirst()];
             }
