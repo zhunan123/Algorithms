@@ -35,16 +35,18 @@ public class FindKPairswithSmallestSums373 {
     while (!minHeap.isEmpty() && count++ < k) {
       // poll current minHeap and add to ans array
       List<Integer> smallest = minHeap.poll();
-      ans.add(new ArrayList<>(smallest)); // here need to deep copy
+      ans.add(new ArrayList<>(smallest).subList(0, 2)); // here need to deep copy
 
       // move the current array to next array and add into minheap
-      if (smallest.get(1) == nums2[nums2.length - 1]) {
+      // if we have reach to the end of one row, continue to next row
+      if (smallest.get(2) == nums2.length - 1) {
         continue;
       }
-      if (j + 1 < nums2.length) {
-        smallest.set(1, nums2[++j]);
-        minHeap.offer(smallest);
-      }
+      List<Integer> nextList = new ArrayList<>();
+      nextList.add(smallest.get(0));
+      nextList.add(nums2[smallest.get(2) + 1]);
+      nextList.add(smallest.get(2) + 1);
+      minHeap.offer(nextList);
     }
     return ans;
   }
