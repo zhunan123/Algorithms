@@ -1,4 +1,4 @@
-package ShoulderU.Math;
+package ShoulderU.Math.aug13;
 
 public class PalindromeNumber9 {
     public boolean isPalindrome(int x) {
