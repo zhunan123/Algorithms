@@ -1,6 +1,10 @@
 package ShoulderU.Tree.aug17;
 
 public class DesignAddandSearchWordsDataStructure211 {
+    /**
+     Time Complexity for addWord: O(N) where N is the length of the word.
+     Time Complexity for search: O(26^N) in the worst-case scenario with all '.' characters, but much less on average and O(N) for words without any '.' characters.
+     */
     class TrieNode {
         boolean isWord;
         String word;
