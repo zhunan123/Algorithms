@@ -47,8 +47,8 @@ public class DesignAddandSearchWordsDataStructure211 {
 
         if (word.charAt(word_index) == '.') {
             // traverse all node's children to find if have children node
-            for (TrieNode node2 : node.children) {
-                if (find(word, node2, word_index + 1)) {
+            for (TrieNode tempNode : node.children) {
+                if (find(word, tempNode, word_index + 1)) {
                     return true;
                 }
             }
