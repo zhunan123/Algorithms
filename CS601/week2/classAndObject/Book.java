@@ -1,4 +1,4 @@
-package cs601.week2.classAndObject;
+package week2.classAndObject;
 
 public class Book {
   private String title;

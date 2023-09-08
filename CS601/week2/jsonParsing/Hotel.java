@@ -1,4 +1,4 @@
-package CS601.jsonParsing;
+package jsonParsing;
 
 public class Hotel {
 }

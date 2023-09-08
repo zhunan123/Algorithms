@@ -1,4 +1,4 @@
-package cs601.week2.jsonParsing;
+package week2.jsonParsing;
 
 public class Person {
 

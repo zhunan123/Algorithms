@@ -1,4 +1,6 @@
-package CS601.jsonParsing;
+package week2.jsonParsing;
+
+import java.util.List;
 
 public class People {
 

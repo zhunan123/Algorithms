@@ -1,0 +1,43 @@
+* make your class as immutable as possible
+    -> LocalDate immutable, Date is mutable
+    -> make private & final for all data
+    -> no setters & getters
+    -> make class final
+* Design
+    # coupling
+        -> class depends on each other, we want to be loosely coupled
+            -> why? loose coupling ensure that changes in one class don't requires changes in other classes
+    # cohesion
+        -> we want high cohesion, each variable need to focus on same main task
+            -> high cohesion: every variables is working on the main task, each var is usefull
+            -> low cohesion: have 2 variables, one is fileName, another is string. say one method only use fileName, and another method only use the string var
+                -> not really working towards 1 goal
+        -> every class should have 1 clear goal, if you have multiple responsibility, split into multiple class
+* Instance variable
+    -> some other class might want to access as well
+* Design Principle
+    -> keep it simple
+    -> dry & not repeating
+    -> single responsibility
+    -> open-closed
+        -> not change class so frequent, minimize making changes to the class, can just extending it
+    -> use interface
+    -> Inheritance
+    -> dependency injection
+
+* Interface ->(can only have constant, abstract method, default method in interface)
+    -> a signature / abstract method can be put inside interface, and every class implements this interface need to implement this abstract method
+    -> all methods in an interface are abstract unless they are declared as default
+    -> abstract method no need to be function
+    -> default method need to be complete function
+    -> interface annot be instantiated
+    ->IMPORTANT: Polymorphism Via/Using Interface 多样性 a parent class called "Creature" have 2 child class "Human" & "Alien" so creature instance can be polymorphism can either be human or alien,
+        -> or the parent class can be replaced by a interface, child class can be replaced by 2 class that implements that interface, we can do below
+            -> Speaker(interface) guest = new Philosopher(); (Philosopher is a class)
+                guest.speak(); // Philosopher's version
+                guest = new Dog()
+                guest.speak(); // Dog's version
+        -> ability to take many forms
+        -> a variables that can refer to different types of object at different time
+    -> interface can also have variables but need to be initialized means need to have value assigned and by default any variables in interface will be static & final
+    -> IMPORTANT: can create a polymorphism reference, we can make it the type of variable to the name of the interface, it can point to any object/class that implement this interface
