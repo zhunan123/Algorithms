@@ -1,0 +1,31 @@
+* polymorphism via interface recap
+    -> is below 5 line valid separately?
+        -> Speaker first = new Dag();   -  Yes
+        -> Philosopher second = new Philosopher -  Yes
+        -> second.pontificate() -  Yes
+        -> first = second -  Yes
+        -> second = first - No, need to downcast first since its the interface type, usually we put interface type to left, but to tright is ok
+            -> change to second = (Philosopher (first))
+* Program to interface, more flexible
+    -> List<Integer> list = new ArrayList<>(), or List<Integer> list = new LinkedList<>(); -------- Speaker sp = new Philosopher(); need downcast ((Philosopher)sp).pontificate();
+        -> List is a build in interface that both ArrayList class and LinkedList class implements it (Like Speaker interface, both ArrayList and LinkedList implements it), in ArrayList and LinkList class actually implements arrayList and linkedlist data structure.
+        -> we have List<Integer> list = new ArrayList<>(), later on we want to change to List<Integer> list = new LinkedList<>(), it won't affected functionality
+    -> similar to Map<String, Integer> map = new HashMap<>(), Map is interface, HashMap is a class that implements map interface.
+    ->
+* Iterable build in Interface
+    -> if a class implements Iterable interface, we can iterate object's content and use iterator explicitly
+        -> in this class that implements iterable interface, must implements a iterator() method
+            -> this iterator() method must return a Iterator object, like a book mark other class can use to iterate/step over collections use next()
+            -> see the Library catalog example
+                -> public class LibraryCatalog implements Iterable<Book> {}
+                    -> this LibraryCatalog class need to implements iterator() method
+                        and return Iterator object/Iterator class that builds from another build-in interface called Iterator
+                    @Override
+                    public Iterator<Book> iterator(){
+                        return books.iterator(); // books are arrayList which already have build-in iteration since arrayList implements Iterable
+                    }
+                    -> then on the driver
+    -> IMPORTANT - Iterable interface implements iterator method that returns Iterator object/Iterator class (need to write our own Iterator class) which implemented from java build-in Iterator class which have hasNext() and next() method
+    -> ArrayList implements Iterable so has list.iterator() method, but regular array like String[] does not have arr.iterator()
+        -> want to implement our own iterator() - check ToyBox class
+

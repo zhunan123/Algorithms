@@ -1,0 +1,9 @@
+* Dependency Injection
+    -> pass reference class instance variable in as a props into another class
+    -> loosely coupled
+    -> Two class depends on each other
+    -> hard wiring - bad
+        -> do not create a object/instance variable of class B inside class A and use it - see spell check with hardWiring
+        -> disadvantage? not flexible, what if you want to change later on
+    -> we should inject/pass the class B(or the interface it implements) into the class A(pass into constructor)
+    -> does not always has to be in the constructor, something you can inject it to a difference method.

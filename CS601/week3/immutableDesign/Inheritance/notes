@@ -1,0 +1,6 @@
+* Inheritance
+    -> use code from parents so no duplicates
+    -> keyword extend
+    -> protected method means children can access to this parent method, and anyone in this package can access it
+    -> child inherit public and protected method and data of the parent
+    -> super reference -> use super() to call parent constructor
