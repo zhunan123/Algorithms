@@ -9,10 +9,18 @@
         -> divide and conquer
             # example [1, 4, 2, 3] -> [1, 4] & [2, 3] -> (so we grab right half to compare with left half)-> compare 2 with 1, bigger no inversion, but compre 2 with 4, 4 > 2 so found 1 inversion, then 4 also > 3 found another inversion
             # divide list into left half A and right half B
-            # count inversions in A and count inversions in B -> 0 inversion in left and 0 inversion in right
-            # compare left half and right half and count number if inversions (assume 2 halves list already sorted)
+            # count inversions in A and count inversions in B -> 0 inversion in left and 0 inversion in right --------------- similar to call MergeSort() on two halves-----O(logn)
+            # compare left half and right half and count number if inversions (assume 2 halves list already sorted) -----------------similar to Merge() merge and sort-----------O(n)
                 ## will give inter-subarray counts of inversions between A abd B -> theres 2 inversions
             # return inversions in A + inversions in B + interSubArray inversions = final counting inversion
+                => sort and count List A -> rA
+                => sort and count list B -> rB
+                => merge and count(A, B) -> rAB
+                => return rA + rB + rAB
+                    ===> add + left half inversion
+                    ===> add + right half inversion
+                    ===> add + inversions between
+                    ===> return total inversion
         -> another example: [1, 3, 5, 7] || [2, 4, 6, 8], starting with right half first 2 (which half found the smaller need to continue advance number to right)
             -> this example do not have List A inversions and List B inversions since it is already sorted, only have inversions between left array and right array
             -> start from right first and compare to left first (if left < right means no inversion found)
@@ -27,3 +35,34 @@
             -> bring 8 down
             -> then we added the inversion count this is only the inversions that we can found between left and right; total inversion count is 3 + 2 + 1 = 6
             -> this is called merge and count by adding up the inversions.
+    -> Time complexity of inversion count?
+        -> if we do above [1, 3, 5, 7] || [2, 4, 6, 8] example is O(n) for finding inversion count between interSubArray, since we are just do merge part, is O(n)
+        -> another example [10,7,25,2,11,12,20,4,6,1]
+        -> similar to merge sort we split in middle
+            -> if 5 elements we split in middle to 3, 2, if 3 element we split 2, 1, like split merge sort list in middle
+            -> number of levels you ned to go is logn, and amount of work you need to do is O(n), so total O(nlogn)
+            -> I guess first question is why #level is logn and why each level is O(n)?????
+            -> overall is O(nlogn) we do 2 mergeSort part and 1 merge part
+            -> I see theres a lot similarity between mergeSort and counting inversion, could you give me some details or examples why make them super similar???? i think the way we merge and count is inverse procedure of mergeSort?
+* Kendall's Tau Distance (another method for finding similar ranks are counting disagreeing paris)
+    -> count the disagreeing pairs
+        -> -> so we are basically count the disagreeing pairs to see how different they are, measure of difference, have 2 array of inputs
+        *** 1 4 2 3 || 1 4 3 2(3 inversion)
+        *** 2 4 1 3(3 inversion) subtract will lead 0 disagree, but actually they have 1,4 and 4,1
+        -> agree pairs, the order is same means but they agree, (2, 3) pairs are agree, even tho they not connected, 2 is first, 3 is after
+        -> disagree pairs, (1,4) & (4,1) they have different order for same 2 numbers
+        -> if I count inversions for each list and subtract will that give the disagreeing pairs, is that work?
+            --> no, since they can have inversion that agreed, what does this mean?????
+            -> potential method, can change to a counting inversion problem
+* Recursion Tree T(n) amount of work for n element
+    ->                      T(n) ------------> 1 * n = O(n) for copy version means need a additional temp array, but O(1) for inplace version means no need copy array
+                        /         \
+                     T(n/2)      T(n/2)------------> 2 * n/2 = O(n)
+                    /     \     /     \
+                T(n/4) T(n/4) T(n/4)  T(n/4)------------> 4 * n/4 = O(n)
+                .      .    .    .    .
+                .      .    .    .    .
+                .      .    .    .    .
+                T(1) T(1) T(1) T(1) T(1) T(1).... k * n/k = have n of them --->O(n)
+    -> number of levels is O(logn)
+    -> so total time complexity of is O(nlog) level of heights * amount of work need to be done each level = total time complexity
