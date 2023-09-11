@@ -1,0 +1,17 @@
+* Comparator Interface
+    -> when we use: when we do not have a clear or specified object that we need to compare we use Comparator()
+    -> its a more general way
+    -> need to override compare method that need to pass 2 object for comparison. compare(Object obj1, Object obj2){}
+    -> also comparator can be a class like public CustomerClassComparator implements Comparator<T> {}
+        -> then we just call Collections.sort(list, new CustomerClassComparator());
+* Comparable Interface.
+    -> type of Comparable Interface has to be same as class/object  class TypeClass implements Comparable<TypeClass>{}
+    -> It has to be inside/implemented by a Object Class, can not be implemented by CustomComparatorClass,
+        -> e.g. class customTreeSet implements Comparable<customTreeSet>{}, another: class People implements Comparable<People>{}
+            -> cannot be class CustomComparatorClass implements Comparable<CustomComparatorClass(noted: this type dont make sense)> {}
+        -> so type of Comparable must be same as the class name
+    -> use Comparable when the compared object has some natural order or obvious things to compare
+        -> for example String class, natural order is alphabetically order
+    -> need to implement/override compareTo() method, more intuitive like String compareTo
+        -> passed only the other object that need to be compared with this/current object
+            -> public compareTo(Object obj) {if (this.getCount() > other.getCount()) return 1...}
