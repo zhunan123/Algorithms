@@ -1,15 +1,16 @@
 -> Greedy
     -> given set that we can choose from ①
-    -> while we can greedy selection, repeatedly to choose greedy ②
+    -> while we can greedy selection, repeatedly to choose greedy and select from sets②
     -> return subset ③
-        --> G=(V,E) ⊆ S, Dijkstra①
-        --> while there are unknown vertex reachable from S, edge that introduces a new vertex with minimum coast ②
+        --> G=(V,E) ⊆ S, Dijkstra, given vertex sets including all vertex we want to visit①
+        --> while there are unknown vertex reachable from S, repeatedly select edge from compared (min weight of edges that current vertex pointed to and previous edge) that will find a new vertex with minimum coast ②
         --> return subset of edges that give you the subsetes path from s③
     -> interval scheduling (greedy)
-        -> sort by earlier finish time
-        -> maximum subsets --> see example and pic in other notes
-            -> sort by finish time (earliest finsih time or latest start time)
-            -> add to set if startTime(j) >= finishTime(last element in set)
+        -> sort by earliest finished time see book notes
+        -> this will be O(nlogn) time since we need to Arrays.sort() which is O(nlogn) time complexity
+        -> find maximum subsets that are compatible means subsets that are not interval --> see example and pic in other notes
+            -> sort by finish time (earliest finish time or latest start time)
+            -> add to set if startTime(j) >= finishTime(last element in set), Sj >= Fc
             -> add startTime(j) to set and update last element in set to j(will automatically add)
             -> return set
         -> sorted by latest start time (maximum scheduling interval) sudocode from backwards  --> walk through the example
@@ -37,4 +38,4 @@
 * Brute-Force example3
     -> find all sets
     -> say we start from 6, with compatibility considered, do not need to care p(4) and p(5)
-    -> we introduce prior a wight its the stat time of jobn
+    -> we introduce prior a weight its the start time of job n

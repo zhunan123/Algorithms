@@ -49,7 +49,7 @@
         -> -> so we are basically count the disagreeing pairs to see how different they are, measure of difference, have 2 array of inputs
         *** 1 4 2 3 || 1 4 3 2(3 inversion)
         *** 2 4 1 3(3 inversion) subtract will lead 0 disagree, but actually they have 1,4 and 4,1
-        -> agree pairs, the order is same means but they agree, (2, 3) pairs are agree, even tho they not connected, 2 is first, 3 is after
+        -> agree pairs, same number pair same order they agree, (2, 3) pairs are agree, even tho they not connected, 2 is first, 3 is after
         -> disagree pairs, (1,4) & (4,1) they have different order for same 2 numbers
         -> if I count inversions for each list and subtract will that give the disagreeing pairs, is that work?
             --> no, since they can have inversion that agreed, what does this mean?????
