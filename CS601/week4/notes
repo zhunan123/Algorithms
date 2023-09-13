@@ -7,9 +7,25 @@
         -> immutable class is great
     -> children cannot override parent constructor
 -> Static Method
+    -> static method can be called without instantiate the class
+        -> class MathUtils {
+               static int square(int num) {
+                   return num * num;
+               }
+           }
+
+           public class Test {
+               public static void main(String[] args) {
+                   int result = MathUtils.square(5);  // Calling the static method 'square' using the class name
+                   System.out.println(result);
+               }
+           }
     -> different between static method and non-static method?
-    -> belong to a class, only one copy for while class
-    -> cannot be override by child class
+        -> static method belongs to the class rather than to any specific instance.  defined using static keyword, non-static method belong to the instance of class
+    -> belong to a class means we can call MathUtils.square(5)
+    -> static method cannot be instantiate
+    -> child class cannot override parent class static method, but it can have it's own static method with the same name as parent class
+    -> static method can only access to other static member variables or static method
 -> type is parent class name in the left, is pointing to the child class in the right
     -> Superclass sub1 = new Subclass(); upCasting
     -> what does this mean? for static methods, binding happens at compile time, based on the type of reference; In this case, reference is of type Superclass
@@ -17,21 +33,44 @@
     -> sinlings
 
 -> upCast, downCast, put() in left or put() in right
+    -> class Animal {}
+       class Dog extends Animal {}
+
+       public class Test {
+           public static void main(String[] args) {
+               Animal animal = new Dog();
+
+               // Downcasting
+               Dog dog = (Dog) animal;
+           }
+       }
+       public class Test {
+           public static void main(String[] args) {
+               Dog dog = new Dog();
+
+               // Upcasting (explicitly, but usually done implicitly)
+               Animal animal = (Animal) dog;
+           }
+       }
 -> private can only be accessed in class and package, if child is not in this package, cannot inherit it
 
 -> abstract class
     -> staff Member
+    -> its typically used as base class for other classes and designed to act as blueprint for child subclass
     -> for parent class and child class have abstract method, do not need to implement the abstract method in abstract class
-    -> until find the child class need to implement the method,
-    -> if you are putting the abstract method in side a class, the class has to be abstract.
-    -> cannot create object from abstract class, still why have constructor
-        -> since abstract class can have child class, child can access to these member variables to we can use constructor.
-    -> child class can either declear its a substract calss to actually implement the abstract method in parent class. see shape3D if decleared is abstract, then is ok
+    -> abstract class allows you to declare abstract method without implementing it, and leave actual implementation to subclass
+        -> until find the child class need to implement the method,
+    -> if you are putting the abstract method inside a class, the class has to be abstract as well.
+    -> cannot create object from abstract class(abstract class cannot be instantiate), but still can have have constructor, why?
+        -> since abstract class can have child class, child can access to these member variables so we can use constructor.
+    -> child class can either declare its a abstract class or actually implement the abstract method in parent class. see shape3D if declared is abstract, then is ok
     -> cannot write abstract class to private, since it is private, child outside the package cannot override it
         -> can write abstract class to protected, child can override it
+    -> Abstract classes can have abstract methods— means methods without a body.
+        -> Any class that extends an abstract class must provide an implementation for all of its abstract methods, unless the subclass is also declared as abstract.
+            -> abstract class Animal {
+                          abstract void sound();  // Abstract method
+                      }
+    -> question: say base abstract class has 2 abstract method, a child class implement one of the abstract class, and did not implement the other abstract method, is this class abstract or not abstract?
 -> interface Vs. abstract
     -> switch abstract function to interface will lose all member variables
--> - [x] I dont quite understand greedy letcure slides #13, I dont really understand the diagram here, what is the blue section Jm here. could you explain it?
-    -> and what is differenct between Greedy and optimal.
-     -> and I dont understand that greedy must be compatible with Jm blue section and what do you mean by combine greedy + optimal subsolution gives optimal solution
-     -> this is actually assume greedy is not optimal, but after adding a optimal solution, we have a contradiction, means the greedy solution is optimal

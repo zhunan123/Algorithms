@@ -41,3 +41,7 @@
     -> we introduce prior a weight its the start time of job n
 
 ->counterexample for earliest start time will block so others see counter example on slides but if we use earliest finishing time or latest starting time, it will not counter these problems
+-> - [x] I don't quite understand greedy lecture slides #13, I don't really understand the diagram here, what is the blue section Jm here. could you explain it?
+    -> and what is different between Greedy and optimal.
+     -> and I don't understand that greedy must be compatible with Jm blue section and what do you mean by combine greedy + optimal solution gives optimal solution
+     -> this is actually assume greedy is not optimal, but after adding a optimal solution, we have a contradiction, means the greedy solution is optimal
