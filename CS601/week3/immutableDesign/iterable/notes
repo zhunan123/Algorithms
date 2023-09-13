@@ -25,7 +25,7 @@
                         return books.iterator(); // books are arrayList which already have build-in iteration since arrayList implements Iterable
                     }
                     -> then on the driver
-    -> IMPORTANT - Iterable interface implements iterator method that returns Iterator object/Iterator class (need to write our own Iterator class) which implemented from java build-in Iterator class which have hasNext() and next() method
+    -> IMPORTANT - Iterable interface implements iterator method that returns Iterator object/Iterator class (need to write our own Iterator class) which implemented from java build-in Iterator Interface which have hasNext() and next() method
     -> ArrayList implements Iterable so has list.iterator() method, but regular array like String[] does not have arr.iterator()
         -> want to implement our own iterator() - check ToyBox class
 

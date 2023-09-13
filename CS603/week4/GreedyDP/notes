@@ -39,3 +39,5 @@
     -> find all sets
     -> say we start from 6, with compatibility considered, do not need to care p(4) and p(5)
     -> we introduce prior a weight its the start time of job n
+
+->counterexample for earliest start time will block so others see counter example on slides but if we use earliest finishing time or latest starting time, it will not counter these problems

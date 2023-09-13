@@ -1,0 +1,37 @@
+-> why Overrides symbol?
+    -> compiler can check for error
+    -> overloading in same class has method with same name but different functionality, overrides difference?
+        -> overrides: overrides a interface default method, compiler can check syntax error and parameter
+        -> overloading: method have same name in a class, but different parameter and different functionality
+    -> why make parent class function to children cannot override the method?
+        -> immutable class is great
+    -> children cannot override parent constructor
+-> Static Method
+    -> different between static method and non-static method?
+    -> belong to a class, only one copy for while class
+    -> cannot be override by child class
+-> type is parent class name in the left, is pointing to the child class in the right
+    -> Superclass sub1 = new Subclass(); upCasting
+    -> what does this mean? for static methods, binding happens at compile time, based on the type of reference; In this case, reference is of type Superclass
+-> class hierarchy
+    -> sinlings
+
+-> upCast, downCast, put() in left or put() in right
+-> private can only be accessed in class and package, if child is not in this package, cannot inherit it
+
+-> abstract class
+    -> staff Member
+    -> for parent class and child class have abstract method, do not need to implement the abstract method in abstract class
+    -> until find the child class need to implement the method,
+    -> if you are putting the abstract method in side a class, the class has to be abstract.
+    -> cannot create object from abstract class, still why have constructor
+        -> since abstract class can have child class, child can access to these member variables to we can use constructor.
+    -> child class can either declear its a substract calss to actually implement the abstract method in parent class. see shape3D if decleared is abstract, then is ok
+    -> cannot write abstract class to private, since it is private, child outside the package cannot override it
+        -> can write abstract class to protected, child can override it
+-> interface Vs. abstract
+    -> switch abstract function to interface will lose all member variables
+-> - [x] I dont quite understand greedy letcure slides #13, I dont really understand the diagram here, what is the blue section Jm here. could you explain it?
+    -> and what is differenct between Greedy and optimal.
+     -> and I dont understand that greedy must be compatible with Jm blue section and what do you mean by combine greedy + optimal subsolution gives optimal solution
+     -> this is actually assume greedy is not optimal, but after adding a optimal solution, we have a contradiction, means the greedy solution is optimal
