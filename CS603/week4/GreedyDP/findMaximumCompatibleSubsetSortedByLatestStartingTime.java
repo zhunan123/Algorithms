@@ -11,6 +11,8 @@ public class findMaximumCompatibleSubsetSortedByLatestStartingTime {
         findMaximumCompatibleSet(list);
     }
 
+    // this is for normal interval schedule only aim to calculate the max number of subset that is compatible with each other
+
     /**
      * sudo code
      * sort lists by latest starting time

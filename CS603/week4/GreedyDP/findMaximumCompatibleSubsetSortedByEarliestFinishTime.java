@@ -16,6 +16,8 @@ public class findMaximumCompatibleSubsetSortedByEarliestFinishTime {
      * return S for result
      * */
 
+    // this is for normal interval schedule only aim to calculate the max number of subset that is compatible with each other
+
     public static List<int[]> findMaximumCompatibleSet(int[][] lists) {
         Arrays.sort(lists, (a, b) -> a[1] - b[1]);
         List<int[]> ans = new ArrayList<>();
