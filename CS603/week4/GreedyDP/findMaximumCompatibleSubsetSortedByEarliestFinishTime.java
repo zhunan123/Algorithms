@@ -7,11 +7,11 @@ import java.util.List;
 public class findMaximumCompatibleSubsetSortedByEarliestFinishTime {
     /**
      * sudo code
-     * sort array by earliest finishing time
-     * for i = 0 -> lists.len - 1, f1 <= f2 <= f3 <= f4......<=fn
-     * S-> Ø, means initially s is empty set, Si = 4
-     * if (j compatible with S, means Sj(current list start time) >= Fi(finish time of last one in sets)){
-     *     S <- S ∪ {j} s is new sets with j added and update Fi = Fj
+     * sort array by earliest finishing time(n, s1,s2.....sn, f1,f2.....fn) sj is start time for job j, fj is finish time for job j;
+     * for i = 0 -> lists.len - 1(length of job n, or just n), f1 <= f2 <= f3 <= f4......<=fn
+     * S-> Ø, means initially s is empty set, fs = 4 (fs means last/the latest finish time in set)
+     * if (j compatible with S, means Sj(current list start time) >= Fj(finish time of last one in sets)){
+     *     S <- S ∪ {j} s is new sets with j added and update the last finish time in s to Fs = Fj
      * }
      * return S for result
      * */
@@ -21,7 +21,7 @@ public class findMaximumCompatibleSubsetSortedByEarliestFinishTime {
     public static List<int[]> findMaximumCompatibleSet(int[][] lists) {
         Arrays.sort(lists, (a, b) -> a[1] - b[1]);
         List<int[]> ans = new ArrayList<>();
-        ans.add(lists[0]);
+        ans.add(lists[0]); // add first job j  into ans
         for (int i = 1; i < lists.length; i++) {
             if (lists[i][0] >= ans.get(ans.size() - 1)[1]) {
                 ans.add(lists[i]);
