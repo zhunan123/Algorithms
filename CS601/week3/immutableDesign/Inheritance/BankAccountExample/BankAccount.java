@@ -5,14 +5,21 @@ public class BankAccount {
     private double balance;
     private long number;
 
+    private String owner;
+
     public BankAccount(String name, double balance, long number) {
         this.name = name;
         this.balance = balance;
         this.number = number;
     }
 
+    public BankAccount(String owner, double balance) { // second constructor
+        this.balance = balance;
+        this.owner = owner;
+    }
+
     public void withdraw(double amount) {
-        if (balance - amount > 0) {
+        if (balance - amount >= 0) {
             balance -= amount;
         } else {
             throw new IllegalArgumentException("invalid withdraw amount");
