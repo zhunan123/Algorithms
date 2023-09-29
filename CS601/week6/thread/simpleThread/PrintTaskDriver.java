@@ -70,7 +70,7 @@ public class PrintTaskDriver {
                 return num;
             }
         };
-        // need to create Future task first
+        // store the computed res in FutureTask type which do not need to wait for this thread to finish task
         FutureTask<Integer> result = new FutureTask<>(callable);
         Thread t6 = new Thread(result);
         t6.start();
@@ -91,6 +91,28 @@ public class PrintTaskDriver {
         }
         MyThread t7 = new MyThread();
         t7.start();
+
+        System.out.println("----------------------------------------------------");
+        // # 7 create a array of threads
+        class MyThread1 extends Thread {
+            private int num;
+
+            public MyThread1(int num) {
+                this.num = num;
+            }
+
+            public void run() {
+                for (int i = 0; i < num; i++) {
+                    System.out.println(i + " " + Thread.currentThread().getName());
+                }
+            }
+        }
+        MyThread1[] threads = new MyThread1[3];
+        for(int i = 0; i < threads.length; i++) {
+            // initialize each thread then start
+            threads[i] = new MyThread1(5);
+            threads[i].start();
+        }
     }
 
 }
