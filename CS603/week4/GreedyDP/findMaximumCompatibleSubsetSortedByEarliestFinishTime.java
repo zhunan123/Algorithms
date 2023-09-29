@@ -10,7 +10,7 @@ public class findMaximumCompatibleSubsetSortedByEarliestFinishTime {
      * sort array by earliest finishing time(n, s1,s2.....sn, f1,f2.....fn) sj is start time for job j, fj is finish time for job j;
      * for i = 0 -> lists.len - 1(length of job n, or just n), f1 <= f2 <= f3 <= f4......<=fn
      * S-> Ø, means initially s is empty set, fs = 4 (fs means last/the latest finish time in set)
-     * if (j compatible with S, means Sj(current list start time) >= Fj(finish time of last one in sets)){
+     * if (j compatible with S, means Sj(current list start time) >= Fs(finish time of last one in sets)){
      *     S <- S ∪ {j} s is new sets with j added and update the last finish time in s to Fs = Fj
      * }
      * return S for result
