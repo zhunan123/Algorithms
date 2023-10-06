@@ -46,6 +46,7 @@ public class NoSynchronization {
 
     public static void main(String[] args) throws InterruptedException {
         for (int i = 0; i < 1000; i++) {
+            // test for 1000 thread and see which thread don't have overall of 0
             NoSynchronization ns = new NoSynchronization();
             ns.createThreads();
         }
