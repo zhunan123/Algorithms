@@ -1,10 +1,11 @@
-package week2.classAndObject;
+package week2.classAndObjectEncapsulation;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
-public class Library {
+public class Library implements Iterable<Book>{
   private final List<Book> books;
   private int numBooks;
   private String title;
@@ -58,6 +59,7 @@ public class Library {
   }
 
   // break encapsulation, when we call this method, we can delete all books if we want
+  // shallow copy
   public List<Book> getBooks1() {
     return books;
   }
@@ -91,5 +93,10 @@ public class Library {
       sb.append(book.toString() + System.lineSeparator());
     }
     return sb.toString();
+  }
+
+  @Override
+  public Iterator<Book> iterator() {
+    return books.iterator();
   }
 }

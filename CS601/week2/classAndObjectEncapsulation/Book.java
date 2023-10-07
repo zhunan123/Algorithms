@@ -1,4 +1,4 @@
-package week2.classAndObject;
+package week2.classAndObjectEncapsulation;
 
 public class Book {
   private String title;
