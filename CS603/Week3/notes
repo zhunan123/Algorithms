@@ -7,10 +7,11 @@
         -> counting inversion is one application of merge sort
         -> the original is O(n^2) if we go thru every preference rankings, we don't want that, so we use divide and conquer, counting inversions
         -> divide and conquer
-            # example [1, 4, 2, 3] -> [1, 4] & [2, 3] -> (so we grab right half to compare with left half)-> compare 2 with 1, bigger no inversion, but compre 2 with 4, 4 > 2 so found 1 inversion, then 4 also > 3 found another inversion
+            # example [1, 4, 2, 3] -> [1, 4] & [2, 3] -> (so we grab right half to compare with left half)-> compare 2 with 1, bigger no inversion,
+                but compre 2 with 4, 4 > 2 so found 1 inversion, then 4 also > 3 found another inversion
             # divide list into left half A and right half B
             # count inversions in A and count inversions in B -> 0 inversion in left and 0 inversion in right --------------- similar to call MergeSort() on two halves-----O(logn)
-            # compare left half and right half and count number if inversions (assume 2 halves list already sorted) -----------------similar to Merge() merge and sort-----------O(n)
+            # compare left half and right half and count number of inversions (assume 2 halves list already sorted) -----------------similar to Merge() merge and sort-----------O(n)
                 ## will give inter-subarray counts of inversions between A abd B -> theres 2 inversions
             # return inversions in A + inversions in B + interSubArray inversions = final counting inversion
                 => sort and count List A -> rA
@@ -28,7 +29,8 @@
             -> compare 2 with second in first half 3 > 2,  so copy down 2 into temp arr, and move right side pointer from 2 to 4,  and we found 3 inversions since we know 3 is smallest,
                 -> anything after 3 like 5 and 7 will also be greater than 2, so total 3 inversions
             -> than we grab next in right half 4 and compare to 3, 4 > 3 so no inversion, can bring 3 down to temp arr, and move left pointer from 3 to 5
-            -> then compare 4 with 5, 5 > 4 so bring 4 down to temp arr, and we know 5 > 4 so found 1 inversions but every ele after 5 is greater  than 4 so totally 2 inversions, move right side pointer from 4 to 6
+            -> then compare 4 with 5, 5 > 4 so bring 4 down to temp arr, and we know 5 > 4 so found 1 inversions but every ele after 5 is greater  than 4 so totally 2 inversions,
+                move right side pointer from 4 to 6
             -> compare 6 with 5, 5 < 6 so no inversion, copy 5 down and move 5 to 7, bring down 5
             -> compare 7 to 6, 7 > 6, 1 inversions found, bring 6 down, since 7 is last in left half, so total 1 inversion, move right side pointer from 6 to 8
             -> compare 7 to 8, 7 < 8, no inversion found, bring 7 down, done with left side
@@ -43,7 +45,8 @@
             -> number of levels you ned to go is logn, and amount of work you need to do is O(n), so total O(nlogn)
             -> I guess first question is why #level is logn and why each level is O(n)?????
             -> overall is O(nlogn) we do 2 mergeSort part and 1 merge part
-            -> I see theres a lot similarity between mergeSort and counting inversion, could you give me some details or examples why make them super similar???? i think the way we merge and count is inverse procedure of mergeSort?
+            -> I see theres a lot similarity between mergeSort and counting inversion, could you give me some details or examples why make them super similar????
+                i think the way we merge and count is inverse procedure of mergeSort?
 * Kendall's Tau Distance (another method for finding similar ranks are counting disagreeing paris)
     -> count the disagreeing pairs
         -> -> so we are basically count the disagreeing pairs to see how different they are, measure of difference, have 2 array of inputs

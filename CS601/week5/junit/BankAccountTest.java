@@ -4,7 +4,7 @@ package week5.junit;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import week3.immutableDesign.Inheritance.BankAccountExample.BankAccount;
+import week3.designPattern.Inheritance.BankAccountExample.BankAccount;
 
 import java.util.ArrayList;
 import java.util.List;

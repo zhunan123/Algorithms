@@ -1,7 +1,7 @@
 package week5.nestedClass.AnonymousClass;
 
 
-import week3.immutableDesign.Interface.Creature;
+import week3.designPattern.Interface.Creature;
 
 public class CreatureExample {
 

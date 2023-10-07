@@ -22,7 +22,7 @@ public class LibraryTestDriver {
       System.out.println(it.next());
     }
 
-    // iterator # 2
+    // iterator # 2, since ArrayList itself has implemented the iterator() method, so we can use iterator() on arrayList as well
     List<Book> books = new ArrayList<>();
     books.add(b1);
     books.add(b2);
