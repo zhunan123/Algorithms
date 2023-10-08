@@ -123,7 +123,7 @@ public class ComparatorExample {
         /*
             method #4 use Comparable<T> to customer compare variables into TreeSet
         */
-        class People implements Comparable<Player> { // this need to be a class
+        class People implements Comparable<People> { // this need to be a class
             double battingAverage;
             public People(double battingAverage) {
                 this.battingAverage = battingAverage;
@@ -134,7 +134,7 @@ public class ComparatorExample {
             }
 
             @Override
-            public int compareTo(Player other) {
+            public int compareTo(People other) {
                 if (this.getBattingAverage() > other.getBattingAverage()) {
                     return 1;
                 } else if (this.getBattingAverage() < other.getBattingAverage()) {
@@ -152,5 +152,6 @@ public class ComparatorExample {
         sets5.add(people1);
         sets5.add(people2);
         sets5.add(people3);
+        System.out.println(sets5);
     }
 }

@@ -9,8 +9,6 @@ public class CreatureDrive {
         cr.say("hello");
         cr.shout();
 
-
-
         // since Creature implements Speak
         // what does that means?
         // cannot create object / instantiate of a interface Speak s = new Speak() not doable, because interface is just behavior that class can have, not a class

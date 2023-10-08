@@ -14,6 +14,7 @@ public class SpeakingDriver {
         speaker.speak(); // Dog version
 
 //        speaker.pontificate(); // this will have error, you are calling from Speaker, but in Speaker you dont have pontificate（） method,
+        // pontificate() not existed in interface, but existed in class that implemented this interface, need to downcast
         // so you need to downcast from Speaker interface to Philosopher class
         ((Philosopher) speaker).pontificate(); // speaker is actually a Philosopher, during runtime, so pontificate is actually point to Philosopher class
 
