@@ -20,7 +20,7 @@ public class Fulltime extends Employee{
         // Question: when we call super.pay() we are getting this class's pay or parent's pay?
             // -> seems like we are adding current class's pay using super.pay()
             // -> i guess since no parent class, so we are getting this class's payrate? let me add a Employee class
-        double payment = super.pay() + bonus; // so my question is super.pay() or super.getPayRate() is getting parent pay data or child pay data
+        double payment = super.pay() + bonus; // so my question is super.pay() or super.getPayRate() is getting parent pay data or child pay data -> ans: child pay data since parent class only provides with the method not actualy data
         double payment1 = super.getPayRate() + bonus;
         double payment2 = getPayRate() + bonus;
 

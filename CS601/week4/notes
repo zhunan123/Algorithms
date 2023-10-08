@@ -56,6 +56,8 @@
 
 -> abstract class
     -> staff Member
+    -> abstract class can have normal variables, but for interface variables are limited to final static
+    -> interface by default all method and variable are public, but for abstract class, you need to explicit say the access modifier of a method
     -> its typically used as base class for other classes and designed to act as blueprint for child subclass
     -> for parent class and child class have abstract method, do not need to implement the abstract method in abstract class
     -> abstract class allows you to declare abstract method without implementing it, and leave actual implementation to subclass
@@ -63,9 +65,9 @@
     -> if you are putting the abstract method inside a class, the class has to be abstract as well.
     -> cannot create object from abstract class(abstract class cannot be instantiate), but still can have have constructor, why?
         -> since abstract class can have child class, child can access to these member variables so we can use constructor.
-    -> child class can either declare its a abstract class or actually implement the abstract method in parent class. see shape3D if declared is abstract, then is ok
-    -> cannot write abstract class to private, since it is private, child outside the package cannot override it
-        -> can write abstract class to protected, child can override it
+    -> child class can either declare its a abstract class (and declare all the abstract method, you need abstract keyword in declaration)or actually implement the abstract method in parent class. see shape3D if declared is abstract, then is ok
+    -> cannot write abstract class/method to private / package-private means no access modifier, since it is package-private, child outside the package/class cannot override it, its it is private, sub class can not access to it's member variables
+        -> can write abstract class to protected, child can override it, sub-class,class, packagte can access to it
     -> Abstract classes can have abstract methods— means methods without a body.
         -> Any class that extends an abstract class must provide an implementation for all of its abstract methods, unless the subclass is also declared as abstract.
             -> abstract class Animal {

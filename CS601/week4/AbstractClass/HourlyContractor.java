@@ -15,7 +15,7 @@ public class HourlyContractor extends Employee{
 
     @Override
     public double pay() {
-        double payment = hourWorked * super.getPayRate();
+        double payment = hourWorked * super.getPayRate(); // this super.getPayRate() will return current contractor's payRate but extends this getPayRate() method from parent class
         return payment;
     }
 }
