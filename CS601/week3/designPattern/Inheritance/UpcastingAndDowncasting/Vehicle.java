@@ -1,4 +1,4 @@
-package week4.StaticMethodAndClass.UpcastingAndDowncasting;
+package week3.designPattern.Inheritance.UpcastingAndDowncasting;
 
 public class Vehicle {
     private int numDoors;

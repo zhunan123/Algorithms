@@ -7,6 +7,7 @@ public class Human extends Creature{
         this.firstName = firstName;
     }
 
+    @Override
     public void speak() {
         System.out.println("human firstname" + firstName + "says " + getGreeting());
     }

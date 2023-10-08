@@ -32,7 +32,7 @@ public class Driver {
             // this is polymorphism
             // alien will call alien speak and human will call human speak
             // polymorphism reference(general) if creature is pointing to alien, will point to alien, it will call alien speak()
-            // is creature is pointing to to human, will ppoint to human.speak()
+            // if creature is pointing to to human, will ppoint to human.speak()
             creature.speak();
 
             if (creature instanceof Alien) {

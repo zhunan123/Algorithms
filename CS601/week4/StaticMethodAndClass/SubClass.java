@@ -6,7 +6,7 @@ public class SubClass extends SuperClass{
     @Override
     public void func1() {
         System.out.println("func1, subclass version");
-//        staticFunc1();
+        staticFunc1();
     }
 
     // child cannot override parent class static method, if i write @Override here will give me error

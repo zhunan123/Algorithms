@@ -2,7 +2,7 @@ package week4.StaticMethodAndClass;
 
 public class Drive {
     public static void main(String[] args) {
-        SuperClass sup1 = new SubClass();
+        SuperClass sup1 = new SuperClass();
         SuperClass sub1 = new SubClass(); // will call children version, so have sub1 as varible name of type superclass but point to subclass class
         SubClass sub2 = new SubClass();
 
@@ -35,6 +35,7 @@ public class Drive {
 
         /** this below will call the parent version*/
         SuperClass sub3 = new SubClass();
+        // parent version  - since for static method calling/binding happens at compile time means it will point to type of reference, so sub3.staticFunc1() will call parent version
         sub3.staticFunc1(); // parent version since staticFunc1 is static method, and will call the staticFunc1 inside superclass.
         sub3.func1(); // child version since Func1 is non-static method ;
         /**

@@ -1,5 +1,7 @@
 package week3.designPattern.dependencyInjection;
 
+import java.util.List;
+
 public class MyBetterSpellChecker {
     private Dictionary dictionary;
 
@@ -9,5 +11,10 @@ public class MyBetterSpellChecker {
 
     public boolean checkSpelling(String word) {
         return dictionary.isValid(word);
+    }
+
+    public List<String> correctSpelling(String wordWithTypo) {
+        //  maybe add some filtering of suggestions
+        return dictionary.suggest(wordWithTypo);
     }
 }

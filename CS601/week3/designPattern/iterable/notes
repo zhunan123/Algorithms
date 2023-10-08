@@ -1,10 +1,12 @@
 * polymorphism via interface recap
     -> is below 5 line valid separately?
-        -> Speaker first = new Dag();   -  Yes
+        -> Speaker first = new Dog();   -  Yes
         -> Philosopher second = new Philosopher -  Yes
         -> second.pontificate() -  Yes
         -> first = second -  Yes
         -> second = first - No, need to downcast first since its the interface type, usually we put interface type to left, but to tright is ok
+            -> need to look at the type not the object it pointing to when doing the assignment
+            -> second has type of Philosopher, first has type of Speaker, so need to downcast type of first from Speaker to Philosopher
             -> change to second = (Philosopher (first))
 * Program to interface, more flexible
     -> List<Integer> list = new ArrayList<>(), or List<Integer> list = new LinkedList<>(); -------- Speaker sp = new Philosopher(); need downcast ((Philosopher)sp).pontificate();

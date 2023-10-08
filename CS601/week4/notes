@@ -52,7 +52,7 @@
                Animal animal = (Animal) dog;
            }
        }
--> private can only be accessed in class and package, if child is not in this package, cannot inherit it
+-> private-package can only be accessed in class and package, if child is not in this package, cannot inherit it
 
 -> abstract class
     -> staff Member
