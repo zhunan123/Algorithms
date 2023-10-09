@@ -10,7 +10,7 @@ public class Student implements Observer{
 
     @Override
     public void update(String info) {
-        System.out.println(name + ": reat! I will go apply for this internship now!");
+        System.out.println(name + ": great! I will go apply for this internship now!");
         System.out.println(info);
     }
 }

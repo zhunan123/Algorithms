@@ -18,6 +18,7 @@ public class Driver {
         Observer o4 = new ProgramManager("Jim Harry", "USF");
         company.registerObserver(o4);
 
+        //company has type of subject need to downcast the company type
         ((Company)company).addInternship("Looking for software engineering intern with ReactJs");
         ((Company)company).addInternship("Looking for software development intern with nodeJs");
         ((Company)company).addInternship("Looking for music intern with other music skills");
