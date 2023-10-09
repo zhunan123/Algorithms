@@ -6,6 +6,11 @@ public class PizzaStoreSimpleFactory {
     /** Using a simple factory. This is better than PizzaStoreV1,
      *  we encapsulation/separate vary things(createPizza logic if statement) to another file(simplePizzaFactory)*/
 
+    /*
+    is creating a simple factory and pass dependency injection this simple factory into constructor
+    of pizza store, and in orderPizza() call factory.createPizza() to go the createPizza() method
+    in factory.
+    * */
     private PizzaSimpleFactory factory;
 
     public PizzaStoreSimpleFactory(PizzaSimpleFactory factory) {

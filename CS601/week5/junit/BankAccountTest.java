@@ -12,7 +12,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class BankAccountTest {
+public class   BankAccountTest {
     private int withdrawAmt;
     private int expectedBalance;
 
