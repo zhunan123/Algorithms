@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.util.Scanner;
 
 public class Driver {
+    // static factory method is a static method that return an instance of class, alternative to use a constructor
     public static void main(String[] args) {
         Driver dr = new Driver();
         Scanner sc = new Scanner(System.in);

@@ -8,6 +8,8 @@ public class NutritionTelescoping {
     private final int sodium;
     private final int carbohydrate;
 
+    // In the context of the NutritionTelescoping class and its overloaded constructors, the this keyword is used for constructor chaining. Let's understand its usage:
+
 
 
     // overloading the constructor
@@ -17,7 +19,7 @@ public class NutritionTelescoping {
 //        this.serving = serving;
 //        this.fat = 0;
 
-//        this(servingSize, serving);
+//        this(servingSize, serving); - this is constructor chaining syntax
         this(servingSize, serving, 0); // question: why you need to add 0 in the end? otherwise will give you error?
         // this constructor only have 2 params, but why are we passing a extra params?
     }

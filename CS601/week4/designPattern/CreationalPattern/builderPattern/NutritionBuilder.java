@@ -1,15 +1,29 @@
 package week4.designPattern.CreationalPattern.builderPattern;
 
 public class NutritionBuilder {
-    private final int servingSize;
-    private final int serving;
+    private final int servingSize; //required
+    private final int serving; //required
     private final int calories;
     private final int fat;
     private final int sodium;
 
+    public NutritionBuilder(Builder b) {
+        this.servingSize = b.servingSize;
+        this.serving = b.serving;
+        this.calories = b.calories;
+        this.fat = b.fat;
+        this.sodium = b.sodium;
+    }
+
+
+    // why use this Builder inner class?
+    //-> immutable
+    //-> use build() method
+    // when is static nested class, is very independent and cannot access outside class member variables
+    // if without static, nested inner class can access outer class data
     public static class Builder {
-        private int servingSize;
-        private int serving;
+        private int servingSize; //required
+        private int serving; //required
         private int calories = 0;
         private int fat = 0;
         private int sodium = 0;
@@ -37,14 +51,6 @@ public class NutritionBuilder {
         public NutritionBuilder build() {
             return new NutritionBuilder(this);
         }
-    }
-
-    public NutritionBuilder(Builder b) {
-        this.servingSize = b.servingSize;
-        this.serving = b.serving;
-        this.calories = b.calories;
-        this.fat = b.fat;
-        this.sodium = b.sodium;
     }
 
     @Override

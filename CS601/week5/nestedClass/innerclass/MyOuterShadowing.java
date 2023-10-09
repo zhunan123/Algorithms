@@ -28,5 +28,13 @@ public class MyOuterShadowing {
         // chain in 1 line
         MyOuterShadowing.InnerShadowing inner2 = new MyOuterShadowing().new InnerShadowing();
         inner2.print();
+
+
+        System.out.println("---------------------------------------------------------------------------");
+        MyOuterShadowing outer2 = new MyOuterShadowing();
+        // -> 3 types of initialize the inner class
+        MyOuterShadowing.InnerShadowing inner3 = outer.new InnerShadowing();
+        InnerShadowing inner4 = outer.new InnerShadowing();
+        MyOuterShadowing.InnerShadowing inner5 = new MyOuterShadowing().new InnerShadowing();
     }
 }

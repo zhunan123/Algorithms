@@ -148,6 +148,7 @@ public class ComparatorExample {
         People people2 = new People(133.23);
         People people3 = new People(143.23);
 
+        // treeset will be sorted based on the comparable, compareTo method in people class
         TreeSet<People> sets5 = new TreeSet(); // add people into treeset, the set will be sorted based on Comparable value defined in People class
         sets5.add(people1);
         sets5.add(people2);

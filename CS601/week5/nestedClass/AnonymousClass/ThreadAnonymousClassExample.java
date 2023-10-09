@@ -43,5 +43,43 @@ public class ThreadAnonymousClassExample {
            }
        };
        thread2.start();
+
+
+       System.out.println("-------------------------------------------------------------");
+       // using init
+       Thread t5 = new Thread() {
+           int num;
+           public Thread init(int num) {
+               this.num = num;
+               return this;
+           }
+           @Override
+           public void run() {
+               // compute factorial of num 10
+               int res = 1;
+               for (int i = 1; i <= num; i++) {
+                   res *= i;
+               }
+               System.out.println(res);
+           }
+       }.init(10);
+
+
+
+       System.out.println("-------------------------------------------------------------");
+       // local variables
+       final int num = 10;
+       Thread t10 = new Thread() {
+           @Override
+           public void run() {
+               // compute factorial of num 10
+               int res = 1;
+               for (int i = 1; i <= num; i++) {
+                   res *= i;
+               }
+               System.out.println(res);
+           }
+       };
+       t10.start();
    }
 }

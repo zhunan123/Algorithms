@@ -9,7 +9,7 @@ public class CreatureExample {
         // create anonymous subclass with no name that extends Creature class while not
         // creating the parentClass/Creature instantiate
         // do not need to instance of Creature class
-        // cannot have a constructor, below 2 example is how to create sub-anonymous-class without passing a constructor
+        // anonymous class cannot have a constructor, below 2 example is how to create sub-anonymous-class without passing a constructor
 
         /**  IMPORTANT------>
          shows a way to pass parameters to the object of a anonymous class.
@@ -17,6 +17,7 @@ public class CreatureExample {
          how to initialize object without a constructor
          * */
 
+        // use anonymous method to create a Creature instance without pass to parent class' constructor since anonymous class cannot have constructor as well
         Creature c = new Creature() { // example 1
             String name;
             // cannot have constructor,
@@ -25,7 +26,6 @@ public class CreatureExample {
                 this.name = name;
                 return this;
             }
-
             @Override
             public void say(String greeting) {
                 System.out.println("I am anonymous: " + greeting);
