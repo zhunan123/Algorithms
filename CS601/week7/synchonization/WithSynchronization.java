@@ -6,6 +6,7 @@ public class WithSynchronization {
 
     private class AdditionTask implements Runnable {
 
+        @Override
         public void run() {
            /* Object lock  = new Object();// if we declaring the lock as local variable instead of creating lock as instance variable
              how does this change ? this is bad
@@ -27,6 +28,7 @@ public class WithSynchronization {
     }
 
     private class SubtractionTask implements Runnable {
+        @Override
         public void run() {
 //            Object lock  = new Object();
             for (int i = 0; i < 1000; i++) {

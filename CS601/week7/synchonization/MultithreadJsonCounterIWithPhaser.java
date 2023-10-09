@@ -124,6 +124,20 @@ public class MultithreadJsonCounterIWithPhaser {
         // then here we have make sure that all thread are done with its job, then we can getCount();
         int c = getCount();
         return c;
+
+
+//        Phaser phaser1 = new Phaser();
+        // register sub thread
+//        phaser1.register();
+//        .finally{
+//            phaser1.arriveAndDeregister()
+//        }
+//        // main thread
+//        phaser1.register();
+//        phaser1.awaitAdvance(phaser1.getPhase());
+//        poolManager.shutdown();
+//        poolManager.awaitTermination(1, TimeUnit.MINUTES)
+//return getCount();
     }
 
 }
