@@ -1,0 +1,55 @@
+->  is it ok multiple thread reading at same time
+-> but with synchronized keyword not able to read at same time
+-> one reading 1 writing, no should not be done concurrently
+-> we do not want more than 1 writer
+
+-> so issue is with synchronized block of code cannot be accessed by 2 reader at same time
+-> but with custom lock we can
+-> but what can this custom class do?
+    -> read the data if no other thread are writing
+    -> write the data if no other thread is reading
+    -> write the data if no other thread is writing
+
+-> ReentrantReadWriteLock is a type of lock that provides a way to control
+    -> access to shared resources in a multithreaded environment.
+    -> This lock allows multiple threads to read data concurrently,
+    -> but it ensures that only one thread can write the data at a time
+    -> ReentrantReadWriteLock allows a single thread to acquire the
+        ->same lock multiple times without causing a deadlock.
+    ->Read Lock: Multiple threads can acquire a read lock simultaneously,
+        -> allowing them to read data concurrently
+    -> Write Lock: Only one thread can acquire a write lock at a time.
+        -> When a thread holds a write lock, it prevents other threads from acquiring either
+        -> read or write locks until the write lock is released
+    -> will be locking and unlocking piece of code that modify same share data
+
+-> for write lock, seems like no much advantage
+    -> for ReentrantReadWriteLock some writer already have the lock
+        -> it is able to require the write lock again, synchronized do not work like that
+    -> if you have write lock, means you have read lock
+        -> but if you have read lock, not means you have write lock, since other threads can have multiple read lock as well
+
+-> custom-lock cons: no one will unlock the lock for us if there's an exception occurs
+-> how to implement custom lock have multiple reader but 1 writer, can use hashmap,
+    -> reader hashmap ---> key: threadId, value:object{timestamp, which threadId holding readLock}
+    -> writer hashmap ---> key: threadId, value:object{timestamp, which threadId holding writeLock}
+    -> so anybody want to acquire the write lock, need to check the reader hashmap, see if there's any key(threadId) existed in reader map
+        -> if there's any key in reader map, means some reader threads is reading the data, writer need to wait until reader finishes
+
+→ if writer already holding the write lock, than after work finish they can re-acquire the lock again if its reentryreadwrite lock,
+
+→ how to read and write both at same time, just use write lock for this code,
+    -> since with write lock you can write and read same time, should not get the read lock.
+
+-> say we only have the read lock, what about we go inside the read method and add some modifying map functionality?
+    ->  java will allow you to modify it, other readers can see a different result while you are modifying it
+        -> since you write in a read lock, so the racing condition, and result will be unpredictable,
+            -> but java will not prevent and you are the one to decide which lock to use
+
+ -> advantage of custom lock, efficiency compare synchronized, readers can access concurrently when reading,
+    -> multiple reader can reader at same time.
+
+-> when reader want to obtain read lock need to make sure no writer is writing the map, so need to check if there's any key in writer hashmap
+    -> if there's writer, need to do wait(), notify(), notifyAll(), low level method, they are inside the object class in stead of thread class
+
+->
