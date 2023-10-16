@@ -64,7 +64,7 @@ public class Food {
              notify(): Wakes up one of the waiting threads that called wait() on the same object.(here same object means Food instance, custom worker thread called this.wait() on Food instance, so this.notify() will wake it up)
              notifyAll(): Wakes up all waiting threads that called wait() on the same object.
 
-             after called this.notify(), deliverGuy thread will release lock (will release on line 68 not 65, means release the lock when thread exits synchronized block), then will go to awaken this.wait() thread
+             after called this.notify(), deliverGuy thread will release lock (will release on line 76 not 73, means release the lock when thread exits synchronized block), then will go to awaken this.wait() thread
              and process what's next after this.wait()
 
              "delivery guy" thread calls notify() after delivering the food,
