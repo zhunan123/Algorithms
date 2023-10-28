@@ -12,7 +12,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MultithreadedJsonCounterWithAtomicInteger {
-    private AtomicInteger count = new AtomicInteger();
+    //Atomic Integer itself provides synchronization
+    private AtomicInteger count = new AtomicInteger(); // replace getCount() and updateCount()
     private ExecutorService poolManager = Executors.newCachedThreadPool();
 //    private Logger logger = LogManager.getLogger();
     private Phaser phaser = new Phaser();
@@ -52,7 +53,8 @@ public class MultithreadedJsonCounterWithAtomicInteger {
         }
     }
 
-    public synchronized int getCount() {
+//    public synchronized int getCount() {
+    public int getCount() { // do not need to be synchronized in this case because Atomic Integer itself provides synchronization
         return count.get();
     }
 

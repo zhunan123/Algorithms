@@ -3,6 +3,7 @@ package week9.sockets.lab7;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Random;
@@ -35,8 +36,10 @@ public class GameServer {
                     ServerSocket welcomingSocket = new ServerSocket(PORT);
 
                     while (!isShutdown) {
+                        System.out.println("Server started: waiting for connections on port " + GameServer.PORT);
                         Socket connectionSocket = welcomingSocket.accept();
-                        Runnable Worker = new GameWorker(connectionSocket);
+                        System.out.println("GameServer: connected.");
+                        Runnable Worker = new GameWorker(connectionSocket, welcomingSocket);
                         poolManager.submit(Worker);
                     }
                 } catch (IOException e) {
@@ -53,9 +56,11 @@ public class GameServer {
     static class GameWorker implements Runnable {
         // FILL IN CODE: add instance variables as needed, such as socket
         private Socket connectionSocket;
+        private ServerSocket welcomingSocket;
 
-        public GameWorker(Socket connectionSocket) {
+        public GameWorker(Socket connectionSocket, ServerSocket welcomingSocket) {
             this.connectionSocket = connectionSocket;
+            this.welcomingSocket = welcomingSocket;
         }
 
         @Override
@@ -66,28 +71,31 @@ public class GameServer {
             Random random = new Random();
             int number = random.nextInt(11);
             try {
-                InputStreamReader reader = new InputStreamReader(connectionSocket.getInputStream());
-                BufferedReader br = new BufferedReader(reader);
+                InputStreamReader inputReader = new InputStreamReader(connectionSocket.getInputStream());
+                PrintWriter outputString = new PrintWriter(connectionSocket.getOutputStream(), true);
+                BufferedReader reader = new BufferedReader(inputReader);
 
                 String input;
                 while (!connectionSocket.isClosed()) {
-                    input = br.readLine();
-
-                    if (input.compareTo(String.valueOf(number)) < 0) {
-                        System.out.println("you guess is too low");
-                    } else if (input.compareTo(String.valueOf(number)) > 0) {
-                        System.out.println("your guess is too high");
-                    } else {
-                        System.out.println("correct guess, game over");
-                        isShutdown = true;
-                        connectionSocket.close();
-                    }
+                    input = reader.readLine();
 
                     if (input.equals(END_GAME)) {
                         connectionSocket.close();
                     } else if (input.equals(SHUTDOWN)) {
                         isShutdown = true;
                         connectionSocket.close();
+                        welcomingSocket.close();
+                    } else {
+                        if (input.compareTo(String.valueOf(number)) < 0) {
+                            outputString.println("you guess is too low");
+                        } else if (input.compareTo(String.valueOf(number)) > 0) {
+                            outputString.println("your guess is too high");
+                        } else {
+                            outputString.println("correct guess, game over");
+                            connectionSocket.shutdownInput();
+                            connectionSocket.shutdownOutput();
+                            connectionSocket.close();
+                        }
                     }
                 }
             } catch (IOException e) {
@@ -96,11 +104,9 @@ public class GameServer {
                 try {
                     if (connectionSocket != null)
                         connectionSocket.close();
+                } catch (IOException e) {
+                    System.out.println("Could not close the socket");
                 }
-                catch (IOException e) {
-                    System.out.println("Can't close the socket : " + e);
-                }
-
             }
         }
     }
