@@ -5,7 +5,7 @@ import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 import java.net.URL;
 
-public class WebClientSSL {
+public class WebClientSSL { // for https more secure using SSL
     public static String callAPI() {
         String s = "";
         String urlString = "https://www.googleapis.com/books/v1/volumes?q=isbn:9787508318134";

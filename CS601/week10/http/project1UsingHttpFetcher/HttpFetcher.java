@@ -1,4 +1,4 @@
-package week10.http;
+package week10.http.project1UsingHttpFetcher;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
@@ -69,11 +69,4 @@ public class HttpFetcher { // for http, less secure using regular http fetch
         return request;
     }
 
-    public static void main(String[] args) {
-        String res = HttpFetcher.fetch("example.com", "/");
-//        String res1 = HttpFetcher.fetchOpenConnection();
-//        String res = HttpFetcher.fetch("tutoringcenter.cs.usfca.edu", "/resources/");
-        System.out.println(res);
-
-    }
 }
