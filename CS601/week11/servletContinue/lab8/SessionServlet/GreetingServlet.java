@@ -19,7 +19,7 @@ public class GreetingServlet extends HttpServlet {
 		response.setContentType("text/html");
 		response.setStatus(HttpServletResponse.SC_OK);
 		PrintWriter out = response.getWriter();
-		String username = null;
+		String username;
 
 		// FILL IN CODE:
 		// Is there a cookie with the name "username"?
@@ -69,7 +69,7 @@ public class GreetingServlet extends HttpServlet {
 		// add cookie to this website when user first visit indicate the website is visited
 		// and next time a user visit this site will have this cookie inserted already
 		username = StringEscapeUtils.escapeHtml4(username);
-		session.setAttribute("date", username);
+		session.setAttribute("USER_NAME", username);
 
 		// redirect to the same servlet using the sendRedirect method.
 		response.setStatus(HttpServletResponse.SC_OK);

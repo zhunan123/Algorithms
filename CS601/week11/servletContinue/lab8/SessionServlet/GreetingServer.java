@@ -22,7 +22,7 @@ public class GreetingServer {
 		ServletContextHandler handler = new ServletContextHandler(ServletContextHandler.SESSIONS);
 		// FILL IN CODE:
 		// Use the handler to map "/greet" to GreetingServlet
-		// Use the handler to map "/clear" to ClearCookieServlet
+		// Use the handler to map "/clear" to ClearSessionServlet
 		handler.addServlet(GreetingServlet.class, "/greet"); // store user information with session
 		handler.addServlet(ClearSessionServlet.class, "/clear");
 
