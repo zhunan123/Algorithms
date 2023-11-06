@@ -21,6 +21,7 @@ public class SessionServlet extends HttpServlet {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
 
+        // get session attribute but data and visitCount
         String visitDate = (String) session.getAttribute("date");
         Integer visitCount = (Integer) session.getAttribute("visitCount");
 
@@ -28,14 +29,18 @@ public class SessionServlet extends HttpServlet {
             visitCount = 0;
         }
         visitCount = visitCount + 1;
+
+        // add or update visitCount to session attribute
         session.setAttribute("visitCount", visitCount);
 
         PrintWriter out = response.getWriter();
-        String title = "Session Servlet";
+        String title = "Session Servlet for Zhunan";
         String header = "<!DOCTYPE html\n>" + "	<head>\n" + "<title>" + title + "</title>\n" + "</head>\n";
 
+        // session will remember visitCount
         String body = "	<body>\n" + "<p>Hello! You have visited " + visitCount + " time(s).</p>\n";
         if (visitDate != null) {
+            // if user visited before
             body = body + "<p> Your last visit was on " + visitDate + "</p>\n";
         }
 
@@ -48,6 +53,10 @@ public class SessionServlet extends HttpServlet {
         String format = "yyyy-MM-dd hh:mm a";
         DateFormat formatter = new SimpleDateFormat(format);
         visitDate = formatter.format(Calendar.getInstance().getTime());
+
+        // if first visit, no last visit text from above will display since not set date session attribute yet,
+        // if first visit,below will set date attribute to session
+        // if not first visit, can also update date attribute to current Date to session
         session.setAttribute("date", visitDate);
 
 

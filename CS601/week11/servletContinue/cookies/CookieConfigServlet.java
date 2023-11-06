@@ -10,11 +10,9 @@ public class CookieConfigServlet extends CookieBaseServlet{
 
     @Override
     protected void doGet(
-        HttpServletRequest request,
-        HttpServletResponse response)
-        throws ServletException, IOException {
+        HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        prepareResponse("Configure", response); // this has html head, and body stuff
+        prepareResponseHeader("Configure", response); // this has html head, and body stuff
 
         PrintWriter out = response.getWriter();
         out.println("<p>To clear saved cookies, please press \"Clear\".</p>");
@@ -25,9 +23,7 @@ public class CookieConfigServlet extends CookieBaseServlet{
         out.println("</form>");
 
         // finish response part
-        out.println("");
-        out.println("</body>");
-        out.println("</html>");
+        finishResponse(request, response);
 
         out.flush();
 
@@ -36,15 +32,13 @@ public class CookieConfigServlet extends CookieBaseServlet{
     }
 
     @Override
-    protected void doPost(
-        HttpServletRequest request,
-        HttpServletResponse response)
-        throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
+        // clear all cookie if user press clear cookie button
         clearCookies(request, response);
 
-        prepareResponse("Configure", response);
+        prepareResponseHeader("Configure", response);
 
         PrintWriter out = response.getWriter();
         out.printf("<p>Your cookies for this site have been cleared.</p>%n%n");

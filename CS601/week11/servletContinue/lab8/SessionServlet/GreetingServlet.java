@@ -14,8 +14,7 @@ import java.io.PrintWriter;
 public class GreetingServlet extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println();
 		response.setContentType("text/html");
 		response.setStatus(HttpServletResponse.SC_OK);
@@ -40,28 +39,29 @@ public class GreetingServlet extends HttpServlet {
 		// Add the method and action attributes to the form below
 		// When the form is submitted, GreetingServlet's doPost method should be invoked
 
-		//if username cookie
-		if (username != null) {
+
+		if (username != null) { //if exist username cookie
 			out.println("<p>Welcome, " + username + "</p>");
-		} else {
+		} else { //if not exist username cookie
 			out.println("<form method=\"post\" action=\" "+ request.getServletPath() + "\" >");
-			out.println("Enter name:<input type=\"text\" name=\"username\" ><br>"); // change this input element to display the textfield with the username parameter
-			out.println("<p><input type=\"submit\" ></p>"); // change the code to display a button
+			out.println("Enter name:<input type=\"text\" name=\"username\" ><br>");
+			out.println("<p><input type=\"submit\" ></p>");
 			out.println("</form>");
 		}
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		response.setContentType("text/html");
+		HttpSession session = request.getSession();
 
 		// This method should be called when the user submits the form with the name.
 		// Extract the name parameter from the request, clean it,
 		// create a "username" cookie with this name, and add it to the response
 
-		String username = request.getParameter("username");// this username is what user enters
+		// this username is what user enters from the web browser (user entered in doGet()) and we get it from parameter here
+		String username = request.getParameter("username");
 		if (username == null || username.equals("")) {
 			username = "anonymous";
 		}
@@ -69,8 +69,7 @@ public class GreetingServlet extends HttpServlet {
 		// add cookie to this website when user first visit indicate the website is visited
 		// and next time a user visit this site will have this cookie inserted already
 		username = StringEscapeUtils.escapeHtml4(username);
-		Cookie cookie = new Cookie("USER_NAME", username);// add above user entered username to cookie and add this username cookie to this website
-		response.addCookie(cookie);
+		session.setAttribute("date", username);
 
 		// redirect to the same servlet using the sendRedirect method.
 		response.setStatus(HttpServletResponse.SC_OK);

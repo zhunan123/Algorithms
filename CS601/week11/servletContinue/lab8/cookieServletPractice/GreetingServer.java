@@ -1,4 +1,4 @@
-package week11.servletContinue.lab8.servletPractice;
+package week11.servletContinue.lab8.cookieServletPractice;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;
@@ -22,7 +22,7 @@ public class GreetingServer {
 		// FILL IN CODE:
 		// Use the handler to map "/greet" to GreetingServlet
 		// Use the handler to map "/clear" to ClearCookieServlet
-		handler.addServletWithMapping(GreetingServlet.class, "/greet");
+		handler.addServletWithMapping(GreetingServlet.class, "/greet"); // store user information using cookie
 		handler.addServletWithMapping(ClearCookieServlet.class, "/clear");
 
 

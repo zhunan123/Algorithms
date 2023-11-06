@@ -1,4 +1,4 @@
-package week11.servletContinue.lab8.servletPractice;
+package week11.servletContinue.lab8.cookieServletPractice;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -15,10 +15,7 @@ import java.io.PrintWriter;
 public class ClearCookieServlet extends HttpServlet {
 
 	@Override
-	protected void doGet(
-			HttpServletRequest request,
-			HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// FILL IN CODE
 		// Clear the "username" cookie
@@ -30,6 +27,7 @@ public class ClearCookieServlet extends HttpServlet {
 	}
 
 	public void clearCookies(HttpServletRequest request, HttpServletResponse response) {
+		// clear cookie named USER_NAME with this browser
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null) {
 			for (Cookie cookie : cookies) {

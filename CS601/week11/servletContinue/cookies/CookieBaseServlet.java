@@ -12,13 +12,34 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("serial")
 public class CookieBaseServlet extends HttpServlet {
 
     /**
-        * Prepares the HTTP response by setting the content type and adding header
-        * HTML code.
+     have a bunch of helper method for cookie servlets
+     * */
+
+    /**
+     * Returns the current date and time in a short format.
+     * @return current date and time
      */
-    public static void prepareResponse(String title, HttpServletResponse response) throws IOException {
+    public static String getDate() {
+        String format = "yyyy-MM-dd"; //"yyyy-MM-dd hh:mm";
+        DateFormat formatter = new SimpleDateFormat(format);
+        return formatter.format(Calendar.getInstance().getTime());
+    }
+
+    /**
+     * Prepares the HTTP response by setting the content type and adding header
+     * HTML code.
+     *
+     * @param title- web page title
+     * @param response- HTTP response
+     * @throws IOException
+     * @see #finishResponse(HttpServletRequest, HttpServletResponse)
+     */
+    public static void prepareResponseHeader(String title, HttpServletResponse response) throws IOException {
+
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println("<!DOCTYPE HTML>");
@@ -30,24 +51,58 @@ public class CookieBaseServlet extends HttpServlet {
     }
 
     /**
+     * Finishes the HTTP response by adding footer HTML code and setting the response code.
+     *
+     * @param request - HTTP request
+     * @param response - HTTP response
+     * @throws IOException
+     * @see #prepareResponseHeader(String, HttpServletResponse)
+     */
+    public static void finishResponse(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        PrintWriter out = response.getWriter();
+
+        out.println("");
+        out.println("</body>");
+        out.println("</html>");
+
+        out.flush();
+
+        response.setStatus(HttpServletResponse.SC_OK);
+        response.flushBuffer();
+    }
+
+    /**
      * Gets the cookies form the HTTP request, and maps the cookie key to the
      * cookie value.
+     *
+     * @param request
+     *            - HTTP request from web server
      * @return map from cookie key to cookie value
      */
-    public Map<String, String> getCookieMap(HttpServletRequest request) {
+    public Map<String, String> addCookieValueToCookieMap(HttpServletRequest request) {
         HashMap<String, String> map = new HashMap<>();
+
+        // get cookie from http web client request and add cookie to cookie array
         Cookie[] cookies = request.getCookies();
 
         if (cookies != null) {
             for (Cookie cookie : cookies) {
+                // add each cookie to cookie map
                 map.put(cookie.getName(), cookie.getValue());
+
+                // or we do not need to add cookie into cookie map,
+                // can direct operate cookie from here
             }
         }
+
         return map;
     }
 
     /**
      * Clears all of the cookies included in the HTTP request.
+     *
+     * @param request - HTTP request
      * @param response - HTTP response
      */
     public void clearCookies(HttpServletRequest request, HttpServletResponse response) {
@@ -61,15 +116,5 @@ public class CookieBaseServlet extends HttpServlet {
                 response.addCookie(cookie);
             }
         }
-    }
-
-    /**
-     * Returns the current date and time in a short format.
-     * @return current date and time
-     */
-    public static String getDate() {
-        String format = "yyyy-MM-dd"; //"yyyy-MM-dd hh:mm";
-        DateFormat formatter = new SimpleDateFormat(format);
-        return formatter.format(Calendar.getInstance().getTime());
     }
 }

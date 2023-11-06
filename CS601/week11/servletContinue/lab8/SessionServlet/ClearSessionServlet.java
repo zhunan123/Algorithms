@@ -9,17 +9,15 @@ import java.io.PrintWriter;
  * endpoint. Clears the "username" cookie.
  */
 @SuppressWarnings("serial")
-public class ClearCookieServlet extends HttpServlet {
+public class ClearSessionServlet extends HttpServlet {
 
 	@Override
-	protected void doGet(
-			HttpServletRequest request,
-			HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// FILL IN CODE
 		// Clear the "username" cookie
-		clearCookies(request, response);
+//		clearCookies(request, response);
+
 		HttpSession session = request.getSession();
 		session.removeAttribute("USER_NAME");
 
@@ -28,16 +26,4 @@ public class ClearCookieServlet extends HttpServlet {
 		out.println("<p>Cookie has been cleared</>");
 	}
 
-	public void clearCookies(HttpServletRequest request, HttpServletResponse response) {
-		Cookie[] cookies = request.getCookies();
-		if (cookies != null) {
-			for (Cookie cookie : cookies) {
-				if (cookie.getName().equals("USER_NAME")){
-					cookie.setValue(null);
-					cookie.setMaxAge(0);
-					response.addCookie(cookie);
-				}
-			}
-		}
-	}
 }
