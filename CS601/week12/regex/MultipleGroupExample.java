@@ -11,6 +11,7 @@ public class MultipleGroupExample {
      => greedy quantifier, will match as much as possible
      => .+ means match any char once or more times with greedy quantifier
      last ele in text is . will match [,\.], greedy quantifier will match as much as possible to last . after everything
+     group2 -> writes about this, and John Doe writes about that, and John Wayne writes about everything
      */
     String patternString1 = "(John) (.+)[,\\.]";
 
@@ -19,7 +20,7 @@ public class MultipleGroupExample {
      => the question mark ? after the + quantifier makes it a reluctant or non-greedy quantifier.
      when match first , or . in [,\.] with given text, matching is done
      * */
-    String patternString2 = "(John) (.+?)[,\\.]";
+    String patternString2 = "(John) (.+?)[,\\.]"; // group2 -> writes about this
 
     /**
      another reluctant quantifier
@@ -33,7 +34,7 @@ public class MultipleGroupExample {
      ending condition or delimiter after the second group in the pattern (.+?), the regex engine will match only
      the first character that comes after "John ".
      * */
-    String patternString3 = "(John) (.+?)";
+    String patternString3 = "(John) (.+?)"; // group2 -> w
 
     Pattern pattern = Pattern.compile(patternString1);
     Matcher matcher = pattern.matcher(text);

@@ -34,7 +34,7 @@ public class InputValidationExample {
      * [a-zA-Z]+ is first group, ([ '-][a-zA-Z]+)* is second group
      */
     public static boolean validateLastName(String lastName) {
-        return lastName.matches("[a-zA-Z]+([ '-][a-zA-Z]+)*");
+        return lastName.matches("[a-zA-Z]+([ -'][a-zA-Z]+)*");
     }
 
 

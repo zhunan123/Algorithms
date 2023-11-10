@@ -11,7 +11,7 @@ public class NamePhoneGroupExerciese {
   public static void extractLastNameAndPhone(String line) {
     Pattern pattern = Pattern.compile("([A-Z][a-z]*)\\s([A-Za-z]+(\\s[A-Za-z]+)*)\\s([1-9]\\d{2}-\\d{3}-\\d{4})");
 
-    Pattern pattern1 = Pattern.compile("([A-Z][a-z]*)\\s([A-Z][a-z]*([ '-][A-Za-z]+))\\s([1-9]\\d{2}-\\d{3}-\\d{4})");
+    Pattern pattern1 = Pattern.compile("([A-Z][a-z]*)\\s([A-Z][a-z]*([ '-][A-Za-z]+)*)\\s([1-9]\\d{2}-\\d{3}-\\d{4})");
     Matcher matcher = pattern1.matcher(line);
 
     if (matcher.matches()) {

@@ -11,12 +11,13 @@ public class GroupExample {
         System.out.println("Example 1 ===============");
         String str = "Hello: This is a Test:1, 2, 3";
 
-        Pattern p1 = Pattern.compile("(.*):(.*)"); // by default the matching is greedy
+        Pattern p1 = Pattern.compile("(.*):(.*)"); // greedy quantifier, will keep searching : greedily
+        // group1 will continue til end of sting then will back off to :
 
         Matcher m1 = p1.matcher(str);
         if (m1.find()) {
-            System.out.println(m1.group(1));
-            System.out.println(m1.group(2));
+            System.out.println(m1.group(1)); // Hello: This is a Test:
+            System.out.println(m1.group(2)); // 1, 2, 3
 
         }
 
@@ -32,19 +33,20 @@ public class GroupExample {
         Pattern p = Pattern.compile("([^aeiou]*)(.*)");
         Matcher m = p.matcher(word);
         if (m.matches()) {
-            // ingstr
             System.out.println(word);
-            System.out.println(m.group(2) + m.group(1));
+            System.out.println(m.group(1)); //str
+            System.out.println(m.group(2)); // ing
         }
-		/*
+
+
 		// example 2
+        // String str = "Hello: This is a Test:1, 2, 3";
 		System.out.println("Example 2===============");
-		Pattern p2 = Pattern.compile("(.*?):(.*)"); // ? made this quantifier "reluctant"
+		Pattern p2 = Pattern.compile("(.*?):(.*)"); // ? made this quantifier "reluctant", will stop when see first :
 		Matcher m2 = p2.matcher(str);
 		if (m2.find()) {
-			System.out.println(m2.group(1));
-			System.out.println(m2.group(2));
+			System.out.println(m2.group(1)); // Hello
+			System.out.println(m2.group(2)); //  This is a Test:1, 2, 3 is remaining
 		}
-		*/
     }
 }

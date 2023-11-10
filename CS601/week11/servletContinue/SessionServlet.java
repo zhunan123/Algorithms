@@ -25,6 +25,16 @@ public class SessionServlet extends HttpServlet {
         String visitDate = (String) session.getAttribute("date");
         Integer visitCount = (Integer) session.getAttribute("visitCount");
 
+        // set how long you want this session to maintain, set the session interval to 100 second
+        session.setMaxInactiveInterval(100);
+
+        /**
+         session.invalidate(): This is a method in the Java Servlet API that invalidates a session and
+         removes any objects bound to it. After calling this method, t
+         he session is considered to be no longer valid.
+         * */
+        // session.invalidate():
+
         if (visitCount == null){
             visitCount = 0;
         }

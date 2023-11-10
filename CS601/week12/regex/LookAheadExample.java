@@ -80,6 +80,23 @@ public class LookAheadExample {
          (?= ... ) is the positive lookahead assertion that tells the regex engine to
          look ahead in the string for a certain pattern without including that pattern in the overall match.
          .*[A-Z] within the lookahead means "match any sequence of characters followed by an uppercase letter".
+
+         IMPORTANT====>
+         positive lookahead must be followed by pattern ?=pattern
+         .{8,} means start from position of any character, there are at lest 8 character includes and after this char
+         I think (?=.{8,}) do not need to followed by anything since nothing before ?= and the patter .{8,} is any string has length of 8 or more
+         (.{3,}) will match to rrr or rvb or psdfig89 but not rr has to be length 3 or more
+         .{8,} means any string consist any character and have a length at least 8, below is any digits but with . is any character
+         \\d{4} 1238 digits have length of 4 same stuff
+
+         (?=.*[A-Z]) means [A-Z] can be appear any place at given string since [A-Z] can follows any char means and starting of string so means anywhere in the string
+         so ?= is positive lookahead assertion,
+         entire (?=.*[A-Z]) will check if a uppercase letter is in this given string
+
+         if all (?=.{8,})(?=.*[A-Z])(?=.*\d)(?=.*[$%@#]) matches, this positive lookahead will not move current index or actual write anything, so still at beginning index
+         then if all the positive lookahead passes, will execute (.*) from current position, .* matches any char 0 or more times
+         here in this case will start at beginning
+         each () in positive lookahead is separated and will be evaluated individually and not influence other () positive lookahead
          * */
         String regex = "(?=.{8,})(?=.*[A-Z])(?=.*\\d)(?=.*[$%@#])(.*)"; // has an uppercase letter and a digit
         Pattern p = Pattern.compile(regex);
