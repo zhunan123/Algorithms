@@ -1,4 +1,4 @@
-package cs601.week12.regex;
+package week12.regex;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

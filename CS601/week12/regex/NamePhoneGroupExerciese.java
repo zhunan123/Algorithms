@@ -1,4 +1,4 @@
-package cs601.week12.regex;
+package week12.regex;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
