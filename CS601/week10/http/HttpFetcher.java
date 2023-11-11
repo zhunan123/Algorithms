@@ -14,6 +14,7 @@ public class HttpFetcher { // for http, less secure using regular http fetch
     public static String fetchOpenConnection() {
         String line = "";
         try{
+            // will return application/json as content type
             url = new URL("https://api.open-meteo.com/v1/forecast?latitude=37.7&longitude=122&current_weather=true");
             URLConnection connection = url.openConnection();
             HttpsURLConnection httpsConnection = (HttpsURLConnection) connection;
@@ -37,7 +38,7 @@ public class HttpFetcher { // for http, less secure using regular http fetch
 
         StringBuffer buf = new StringBuffer();
         try {
-            Socket socket = new Socket(host, PORT);
+            Socket socket = new Socket(host, PORT); // use raw socket to communicate, default will return text/html
 
             OutputStream out = socket.getOutputStream();
             InputStream instream = socket.getInputStream();
@@ -48,6 +49,7 @@ public class HttpFetcher { // for http, less secure using regular http fetch
             System.out.println("Request = " + request);
 
             out.write(request.getBytes()); // send HTTP request to the server
+            // and request to return data in html text
             out.flush();
 
             String line = reader.readLine(); // read HTTP response from server
@@ -71,7 +73,7 @@ public class HttpFetcher { // for http, less secure using regular http fetch
 
     public static void main(String[] args) {
         String res = HttpFetcher.fetch("example.com", "/");
-//        String res1 = HttpFetcher.fetchOpenConnection();
+//        String res = HttpFetcher.fetchOpenConnection();
 //        String res = HttpFetcher.fetch("tutoringcenter.cs.usfca.edu", "/resources/");
         System.out.println(res);
 
