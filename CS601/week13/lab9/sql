@@ -1,0 +1,70 @@
+Create tables for the catalog example in mysql using the following scripts: https://usfca.instructure.com/courses/1615164/files/71615394?wrap=1
+Write and test SQL queries to do the following:
+
+Q1: Print the vendor's country and the number of vendors from each country.
+The expected result of your query:
++--------------+------------------+
+| vend_country | count(vend_name) |
++--------------+------------------+
+| England      |                1 |
+| France       |                1 |
+| USA          |                4 |
++--------------+------------------+
+Ans: select vend_country, count(vend_name)
+    -> from vendors
+    -> group by vend_country;
+
+Q2: Print the names of products that cost more than $10 and that are made by US based vendors.
+The expected result of your query:
++-------------+
+| prod_name   |
++-------------+
+| 2 ton anvil |
+| Detonator   |
+| Safe        |
++-------------+
+Ans: select prod_name
+    -> from products inner join vendors
+    -> where products.vend_id=vendors.vend_id
+    -> and vendors.vend_country='USA' and products.prod_price > 10;
+
+Q3:
+(a) Compute the average price of products made by each vendor (print vend_id):
+The expected result of your query:
++---------+-----------------+
+| vend_id | AVG(prod_price) |
++---------+-----------------+
+|    1001 |       10.323333 |
+|    1002 |        6.205000 |
+|    1003 |       13.212857 |
+|    1005 |       45.000000 |
++---------+-----------------+
+Ans:select vend_id, avg(prod_price)
+        -> from products
+        -> group by vend_id;
+
+(b) Compute the average price of products made by each vendor (print vend_name):
+The expected result of your query:
++-------------+--------------+
+| vend_name   | averagePrice |
++-------------+--------------+
+| Anvils R Us |    10.323333 |
+| LT Supplies |     6.205000 |
+| ACME        |    13.212857 |
+| Jet Set     |    45.000000 |
++-------------+--------------+
+Ans: select vendors.vend_name, avg(prod_price) as averagePrice from vendors inner join products where vendors.vend_id=products.vend_id group by vendors.vend_id;
+
+Q4: Print the names of customers and how many orders they placed, include customers that have not placed any orders.
+Sort by customer name.
+The expected result of your query:
++----------------+------------------+
+| cust_name      | count(order_num) |
++----------------+------------------+
+| Coyote Inc.    |                2 |
+| E Fudd         |                1 |
+| Mouse House    |                0 |
+| Wascals        |                1 |
+| Yosemite Place |                1 |
++----------------+------------------+
+Ans: select cust_name, count(orders.order_num) from customers left outer join orders  on customers.cust_id=orders.cust_id group by orders.cust_id order by customers.cust_name;
