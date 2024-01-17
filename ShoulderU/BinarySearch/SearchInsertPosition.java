@@ -15,6 +15,12 @@ public class SearchInsertPosition {
      * Output: 2
      * */
 
+    /**
+     *
+     * if low > high will break condition, under any case low will be the position to insert target
+     * high will be the position before insertion
+     * */
+
     public int searchInsert(int[] nums, int target) {
         int low = 0;
         int high = nums.length - 1;
